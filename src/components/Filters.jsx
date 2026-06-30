@@ -2,7 +2,8 @@ export default function Filters({
   filters,
   cancellationReasons,
   accountManagers,
-  dateBounds,
+  yearOptions,
+  monthOptions,
   resultCount,
   onChange,
   onReset,
@@ -65,30 +66,40 @@ export default function Filters({
 
         <label>
           <span className="mb-1.5 block text-[10px] font-bold uppercase tracking-[0.08em] text-lucro-muted">
-            Start Date
+            Year
           </span>
-          <input
-            type="date"
-            min={dateBounds.min}
-            max={dateBounds.max}
-            value={filters.dateRange.from}
-            onChange={(event) => onChange({ dateRange: { ...filters.dateRange, from: event.target.value } })}
-            className="w-full rounded-lg border border-lucro-border bg-lucro-surface px-3 py-2 text-[11px] text-lucro-text transition hover:border-lucro-accent focus:border-lucro-accent focus:outline-none"
-          />
+          <select
+            value={filters.year}
+            onChange={(event) => onChange({ year: event.target.value, month: event.target.value ? "ytd" : "" })}
+            className="w-full appearance-none rounded-lg border border-lucro-border bg-lucro-surface px-3 py-2 text-[11px] text-lucro-text transition hover:border-lucro-accent focus:border-lucro-accent focus:outline-none"
+          >
+            <option value="">All Years</option>
+            {yearOptions.map((year) => (
+              <option key={year} value={year}>
+                {year}
+              </option>
+            ))}
+          </select>
         </label>
 
         <label>
           <span className="mb-1.5 block text-[10px] font-bold uppercase tracking-[0.08em] text-lucro-muted">
-            End Date
+            Month
           </span>
-          <input
-            type="date"
-            min={dateBounds.min}
-            max={dateBounds.max}
-            value={filters.dateRange.to}
-            onChange={(event) => onChange({ dateRange: { ...filters.dateRange, to: event.target.value } })}
-            className="w-full rounded-lg border border-lucro-border bg-lucro-surface px-3 py-2 text-[11px] text-lucro-text transition hover:border-lucro-accent focus:border-lucro-accent focus:outline-none"
-          />
+          <select
+            value={filters.month}
+            disabled={!filters.year}
+            onChange={(event) => onChange({ month: event.target.value })}
+            className="w-full appearance-none rounded-lg border border-lucro-border bg-lucro-surface px-3 py-2 text-[11px] text-lucro-text transition hover:border-lucro-accent focus:border-lucro-accent focus:outline-none disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            <option value="">{filters.year ? "Select Month" : "Select Year First"}</option>
+            {filters.year ? <option value="ytd">Year to Date</option> : null}
+            {monthOptions.map((month) => (
+              <option key={month.value} value={month.value}>
+                {month.label}
+              </option>
+            ))}
+          </select>
         </label>
       </div>
     </section>

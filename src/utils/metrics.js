@@ -7,17 +7,29 @@ const ACCOUNT_MANAGERS = [
 ];
 
 const MONTH_INDEX_BY_NAME = {
+  jan: 0,
   january: 0,
+  feb: 1,
   february: 1,
+  mar: 2,
   march: 2,
+  apr: 3,
   april: 3,
   may: 4,
+  jun: 5,
   june: 5,
+  jul: 6,
   july: 6,
+  aug: 7,
   august: 7,
+  sep: 8,
+  sept: 8,
   september: 8,
+  oct: 9,
   october: 9,
+  nov: 10,
   november: 10,
+  dec: 11,
   december: 11,
 };
 
@@ -128,6 +140,24 @@ function getPeriodLabel(date) {
   }).format(parsedDate);
 }
 
+function parseFinalMonth(value) {
+  const match = String(value || "").trim().match(/^([A-Za-z]+)\s+(\d{4})$/);
+  if (!match) return null;
+
+  const monthIndex = MONTH_INDEX_BY_NAME[match[1].toLowerCase()];
+  const year = Number(match[2]);
+  if (monthIndex === undefined || !year) return null;
+
+  const month = String(monthIndex + 1).padStart(2, "0");
+
+  return {
+    id: `${year}-${month}`,
+    label: getPeriodLabel(`${year}-${month}-01`),
+    month,
+    year: String(year),
+  };
+}
+
 function getReasonVariant(reason) {
   const normalizedReason = String(reason).toLowerCase();
   if (normalizedReason.includes("satisfied") || normalizedReason.includes("misalignment")) return "red";
@@ -210,14 +240,18 @@ export function buildCancellationDataset(dashboardData) {
 export function mapApiCancellationsToClientRecords(cancellations) {
   return cancellations.map((row, index) => {
     const date = toDateOnly(row.created_at);
+    const finalPeriod = parseFinalMonth(row.final_month);
+    const periodId = finalPeriod?.id || getPeriodId(date);
     const status = row.status || "Unknown";
     const cancellationReason = normalizeReasonLabel(row.cancellation_reason);
     const revenueTierValue = Number(row.revenue) || 0;
 
     return {
       id: row.id || `cancellation-${index}`,
-      periodId: getPeriodId(date),
-      period: getPeriodLabel(date),
+      periodId,
+      period: finalPeriod?.label || getPeriodLabel(date),
+      periodYear: finalPeriod?.year || (periodId !== "unknown" ? periodId.slice(0, 4) : ""),
+      periodMonth: finalPeriod?.month || (periodId !== "unknown" ? periodId.slice(5, 7) : ""),
       date,
       displayDate: row.cancellation_request_date || date || "No request date",
       client: row.client_name || "Unknown Client",
@@ -240,20 +274,30 @@ export function mapApiCancellationsToClientRecords(cancellations) {
   });
 }
 
-export function createPeriodOptions(data) {
-  const periods = new Map();
+export function createYearOptions(data) {
+  return [...new Set(data.map((item) => item.periodYear).filter(Boolean))].sort();
+}
+
+export function createMonthOptions(data, year) {
+  if (!year) return [];
+
+  const months = new Map();
 
   data.forEach((item) => {
-    if (!item.periodId || item.periodId === "unknown") return;
-    periods.set(item.periodId, item.period);
+    if (item.periodYear !== year || !item.periodMonth) return;
+    months.set(item.periodMonth, getPeriodLabel(`${year}-${item.periodMonth}-01`).replace(` ${year}`, ""));
   });
 
-  return [
-    { id: "overview", label: "Overview", period: "", badge: "All Months", badgeVariant: "live" },
-    ...[...periods.entries()]
-      .sort(([a], [b]) => a.localeCompare(b))
-      .map(([id, label]) => ({ id, label, period: label, badge: "Live", badgeVariant: "live" })),
-  ];
+  return [...months.entries()]
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([value, label]) => ({ value, label }));
+}
+
+export function getActivePeriodLabel(filters) {
+  if (!filters.year) return "All Months";
+  if (!filters.month || filters.month === "ytd") return `${filters.year} Year to Date`;
+
+  return getPeriodLabel(`${filters.year}-${filters.month}-01`);
 }
 
 export function calculateRetentionRate(data) {
@@ -308,12 +352,11 @@ export function filterCancellationData(data, filters) {
   return data.filter((item) => {
     const reasonMatch = !filters.cancellationReason || item.cancellationReason === filters.cancellationReason;
     const managerMatch = !filters.accountManager || item.accountManager === filters.accountManager;
-    const hasDateFilter = Boolean(filters.dateRange.from || filters.dateRange.to);
-    const hasRequestDate = isValidDateString(item.date);
-    const startMatch = !filters.dateRange.from || (hasRequestDate && item.date >= filters.dateRange.from);
-    const endMatch = !filters.dateRange.to || (hasRequestDate && item.date <= filters.dateRange.to);
+    const yearMatch = !filters.year || item.periodYear === filters.year;
+    const monthMatch =
+      !filters.year || !filters.month || filters.month === "ytd" || item.periodMonth === filters.month;
 
-    return reasonMatch && managerMatch && (!hasDateFilter || hasRequestDate) && startMatch && endMatch;
+    return reasonMatch && managerMatch && yearMatch && monthMatch;
   });
 }
 

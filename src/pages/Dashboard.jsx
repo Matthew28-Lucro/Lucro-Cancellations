@@ -20,14 +20,11 @@ import { fetchCancellations, fetchMetrics } from "../services/api.js";
 const VisualAnalyticsSection = lazy(() => import("../components/VisualAnalyticsSection.jsx"));
 
 const initialState = {
-  selectedPeriod: "overview",
   sort: INITIAL_SORT,
 };
 
 function dashboardReducer(state, action) {
   switch (action.type) {
-    case "selectPeriod":
-      return { ...state, selectedPeriod: action.value };
     case "sortColumn": {
       const key = SORTABLE_COLUMN_MAP[action.column];
       if (!key) return state;
@@ -223,23 +220,22 @@ export default function Dashboard() {
 
   const {
     accountManagers,
-    activeOption,
+    activePeriodLabel,
     cancellationReasons,
-    dateBounds,
     driverBars,
     dynamicKpis,
     globalFilteredClients,
     insights,
     leadSourceBars,
-    periodOptions,
+    monthOptions,
     reasonChartData,
     retentionPieData,
     sortedClients,
     trendData,
+    yearOptions,
   } = useMetrics({
     cancellations: apiState.cancellations,
     filters: debouncedFilters,
-    selectedPeriod: state.selectedPeriod,
     sort: state.sort,
   });
 
@@ -255,10 +251,7 @@ export default function Dashboard() {
     <DashboardLayout
       headerProps={{
         ...APP_META,
-        period: activeOption?.period || "",
-        quarterOptions: periodOptions,
-        selectedQuarter: state.selectedPeriod,
-        onQuarterChange: (value) => dispatch({ type: "selectPeriod", value }),
+        period: activePeriodLabel,
       }}
     >
       {apiState.status === "error" ? (
@@ -269,7 +262,8 @@ export default function Dashboard() {
             filters={filters}
             cancellationReasons={cancellationReasons}
             accountManagers={accountManagers}
-            dateBounds={dateBounds}
+            yearOptions={yearOptions}
+            monthOptions={monthOptions}
             resultCount={globalFilteredClients.length}
             onChange={updateFilters}
             onReset={resetFilters}
@@ -279,7 +273,7 @@ export default function Dashboard() {
             <LoadingDashboard />
           ) : (
             <AnalyticsDashboard
-              label={state.selectedPeriod === "overview" ? "All Months at a Glance" : activeOption.label}
+              label={activePeriodLabel === "All Months" ? "All Months at a Glance" : activePeriodLabel}
               kpis={dynamicKpis}
               clients={sortedClients}
               sortState={state.sort}

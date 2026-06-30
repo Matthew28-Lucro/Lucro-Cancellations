@@ -4,16 +4,19 @@ import {
   calculateSaveOpportunityRate,
   createBarItems,
   createCancellationTrendData,
-  createPeriodOptions,
+  createMonthOptions,
   createReasonBreakdownData,
   createRetentionPieData,
+  createYearOptions,
   filterCancellationData,
   generateInsights,
+  getActivePeriodLabel,
   getUniqueOptions,
   getTopRevenueTier,
   mapApiCancellationsToClientRecords,
   sortCancellationData,
 } from "../utils/metrics.js";
+import { EXCLUDED_PERIOD_IDS } from "../constants/dashboard.js";
 
 function buildDynamicKpis(clients) {
   const topRevenueTier = getTopRevenueTier(clients);
@@ -46,60 +49,58 @@ function buildDynamicKpis(clients) {
   ];
 }
 
-export default function useMetrics({ cancellations, filters, selectedPeriod, sort }) {
-  const allClients = useMemo(() => mapApiCancellationsToClientRecords(cancellations), [cancellations]);
-  const periodOptions = useMemo(() => createPeriodOptions(allClients), [allClients]);
-  const activeOption = useMemo(
-    () => periodOptions.find((option) => option.id === selectedPeriod) || periodOptions[0],
-    [periodOptions, selectedPeriod]
+export default function useMetrics({ cancellations, filters, sort }) {
+  const allClients = useMemo(
+    () =>
+      mapApiCancellationsToClientRecords(cancellations).filter(
+        (client) => !EXCLUDED_PERIOD_IDS.includes(client.periodId)
+      ),
+    [cancellations]
   );
-
-  const dateBounds = useMemo(() => {
-    const dates = allClients.map((client) => client.date).filter(Boolean).sort();
-    return { min: dates[0] || "", max: dates[dates.length - 1] || "" };
-  }, [allClients]);
 
   const cancellationReasons = useMemo(() => getUniqueOptions(allClients, "cancellationReason"), [allClients]);
   const accountManagers = useMemo(() => getUniqueOptions(allClients, "accountManager"), [allClients]);
+  const yearOptions = useMemo(() => createYearOptions(allClients), [allClients]);
+  const monthOptions = useMemo(() => createMonthOptions(allClients, filters.year), [allClients, filters.year]);
+  const activePeriodLabel = useMemo(() => getActivePeriodLabel(filters), [filters]);
   const globalFilteredClients = useMemo(
     () => filterCancellationData(allClients, filters),
     [allClients, filters]
   );
-  const scopedClients = useMemo(() => {
-    if (selectedPeriod === "overview") return globalFilteredClients;
-    return globalFilteredClients.filter((client) => client.periodId === selectedPeriod);
-  }, [globalFilteredClients, selectedPeriod]);
   const sortedClients = useMemo(
-    () => sortCancellationData(scopedClients, sort),
-    [scopedClients, sort]
+    () => sortCancellationData(globalFilteredClients, sort),
+    [globalFilteredClients, sort]
   );
-  const dynamicKpis = useMemo(() => buildDynamicKpis(scopedClients), [scopedClients]);
-  const driverBars = useMemo(() => createBarItems(scopedClients, "cancellationReason"), [scopedClients]);
-  const leadSourceBars = useMemo(() => createBarItems(scopedClients, "leadSource"), [scopedClients]);
+  const dynamicKpis = useMemo(() => buildDynamicKpis(globalFilteredClients), [globalFilteredClients]);
+  const driverBars = useMemo(() => createBarItems(globalFilteredClients, "cancellationReason"), [globalFilteredClients]);
+  const leadSourceBars = useMemo(() => createBarItems(globalFilteredClients, "leadSource"), [globalFilteredClients]);
   const trendData = useMemo(
-    () => createCancellationTrendData(scopedClients, selectedPeriod === "overview" ? "month" : "day"),
-    [scopedClients, selectedPeriod]
+    () =>
+      createCancellationTrendData(
+        globalFilteredClients,
+        filters.year && filters.month && filters.month !== "ytd" ? "day" : "month"
+      ),
+    [globalFilteredClients, filters.year, filters.month]
   );
-  const reasonChartData = useMemo(() => createReasonBreakdownData(scopedClients), [scopedClients]);
-  const retentionPieData = useMemo(() => createRetentionPieData(scopedClients), [scopedClients]);
-  const insights = useMemo(() => generateInsights(scopedClients, trendData), [scopedClients, trendData]);
+  const reasonChartData = useMemo(() => createReasonBreakdownData(globalFilteredClients), [globalFilteredClients]);
+  const retentionPieData = useMemo(() => createRetentionPieData(globalFilteredClients), [globalFilteredClients]);
+  const insights = useMemo(() => generateInsights(globalFilteredClients, trendData), [globalFilteredClients, trendData]);
 
   return {
     accountManagers,
-    activeOption,
+    activePeriodLabel,
     allClients,
     cancellationReasons,
-    dateBounds,
     driverBars,
     dynamicKpis,
     globalFilteredClients,
     insights,
     leadSourceBars,
-    periodOptions,
+    monthOptions,
     reasonChartData,
     retentionPieData,
-    scopedClients,
     sortedClients,
     trendData,
+    yearOptions,
   };
 }

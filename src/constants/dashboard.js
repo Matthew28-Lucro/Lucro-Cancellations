@@ -23,10 +23,15 @@ export const SORTABLE_COLUMN_MAP = {
   "Revenue Tier": "revenueTierValue",
 };
 
+export const YEAR_TO_DATE_VALUE = "ytd";
+
+export const EXCLUDED_PERIOD_IDS = ["2026-06"];
+
 export const INITIAL_FILTERS = {
   cancellationReason: "",
   accountManager: "",
-  dateRange: { from: "", to: "" },
+  year: "",
+  month: "",
 };
 
 export const INITIAL_SORT = {

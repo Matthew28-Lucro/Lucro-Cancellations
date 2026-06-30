@@ -10,12 +10,10 @@ function readStoredFilters() {
 
     const parsed = JSON.parse(raw);
     return {
-      ...INITIAL_FILTERS,
-      ...parsed,
-      dateRange: {
-        ...INITIAL_FILTERS.dateRange,
-        ...parsed.dateRange,
-      },
+      cancellationReason: parsed.cancellationReason || INITIAL_FILTERS.cancellationReason,
+      accountManager: parsed.accountManager || INITIAL_FILTERS.accountManager,
+      year: parsed.year || INITIAL_FILTERS.year,
+      month: parsed.month || INITIAL_FILTERS.month,
     };
   } catch {
     return INITIAL_FILTERS;
