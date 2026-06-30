@@ -1,9 +1,8 @@
-import { dashboardData } from "../data/mockData.js";
+import { localCancellations } from "../data/cancellations.js";
 import {
-  buildCancellationDataset,
-  calculateRecoveryRate,
+  calculateSaveOpportunityRate,
   calculateRetentionRate,
-  calculateRevenueAtRisk,
+  getTopRevenueTier,
 } from "../utils/metrics.js";
 
 const API_URL = import.meta.env.VITE_API_URL?.replace(/\/$/, "") || "";
@@ -29,20 +28,8 @@ async function request(endpoint) {
   return response.json();
 }
 
-function mapLocalRecordToApiShape(record) {
-  return {
-    id: record.id,
-    client_name: record.client,
-    cancellation_reason: record.cancellationReason,
-    revenue: record.revenueAtRisk,
-    status: record.status,
-    account_manager: record.accountManager,
-    created_at: record.date,
-  };
-}
-
 function getLocalCancellationRows() {
-  return buildCancellationDataset(dashboardData).map(mapLocalRecordToApiShape);
+  return localCancellations.map((record) => ({ ...record }));
 }
 
 export async function fetchCancellations() {
@@ -58,14 +45,18 @@ export async function fetchMetrics() {
 
   const cancellations = getLocalCancellationRows();
   const metricInput = cancellations.map((row) => ({
-    revenueAtRisk: Number(row.revenue) || 0,
-    recoveredRevenue: 0,
+    revenueTier: row.revenue_tier || "Unknown",
+    revenueTierValue: Number(row.revenue) || 0,
+    status: row.status || "Unknown",
+    preventable: row.preventable || "Unclear",
   }));
+  const topRevenueTier = getTopRevenueTier(metricInput);
 
   return {
     total_cancellations: cancellations.length,
     retention_rate: calculateRetentionRate(metricInput),
-    revenue_at_risk: calculateRevenueAtRisk(metricInput),
-    recovery_rate: calculateRecoveryRate(metricInput),
+    top_revenue_tier: topRevenueTier.label,
+    top_revenue_tier_count: topRevenueTier.count,
+    save_opportunity_rate: calculateSaveOpportunityRate(metricInput),
   };
 }

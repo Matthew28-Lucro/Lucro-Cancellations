@@ -17,7 +17,7 @@ export default function VisualAnalyticsSection({
     <>
       <SectionLabel>Visual Analytics</SectionLabel>
       <div className="grid gap-4 xl:grid-cols-2">
-        <Panel title="Cancellations Over Time" titleTone="rust">
+        <Panel title="Cancellation Requests Over Time" titleTone="rust">
           <CancellationTrendChart data={trendData} isLoading={isLoading} />
         </Panel>
 

@@ -103,15 +103,22 @@ function inferRecoveryRevenue({ status, preventable, revenueAtRisk }) {
 function toDateOnly(value) {
   if (!value) return "";
   const parsedDate = new Date(value);
-  if (Number.isNaN(parsedDate.getTime())) return String(value).slice(0, 10);
+  if (Number.isNaN(parsedDate.getTime())) return "";
   return parsedDate.toISOString().slice(0, 10);
 }
 
+function isValidDateString(date) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date || "")) return false;
+  const parsedDate = new Date(`${date}T00:00:00`);
+  return !Number.isNaN(parsedDate.getTime());
+}
+
 function getPeriodId(date) {
-  return date ? date.slice(0, 7) : "unknown";
+  return isValidDateString(date) ? date.slice(0, 7) : "unknown";
 }
 
 function getPeriodLabel(date) {
+  if (!isValidDateString(date)) return "Unknown Date";
   const parsedDate = new Date(`${date || "1970-01-01"}T00:00:00`);
   if (Number.isNaN(parsedDate.getTime())) return "Unknown Date";
 
@@ -127,6 +134,12 @@ function getReasonVariant(reason) {
   if (normalizedReason.includes("paused") || normalizedReason.includes("financial") || normalizedReason.includes("cpa")) return "orange";
   if (normalizedReason.includes("in-house") || normalizedReason.includes("value") || normalizedReason.includes("unclear")) return "blue";
   return "orange";
+}
+
+function normalizeReasonLabel(reason) {
+  const value = String(reason || "").trim();
+  if (/^sale of practic$/i.test(value)) return "Sale of Practice";
+  return value || "Unclear";
 }
 
 function normalizeStatus(columns, row) {
@@ -197,15 +210,16 @@ export function buildCancellationDataset(dashboardData) {
 export function mapApiCancellationsToClientRecords(cancellations) {
   return cancellations.map((row, index) => {
     const date = toDateOnly(row.created_at);
-    const status = row.status || "Cancelled";
-    const cancellationReason = row.cancellation_reason || "Unclear";
-    const revenueAtRisk = Number(row.revenue) || 0;
+    const status = row.status || "Unknown";
+    const cancellationReason = normalizeReasonLabel(row.cancellation_reason);
+    const revenueTierValue = Number(row.revenue) || 0;
 
     return {
       id: row.id || `cancellation-${index}`,
       periodId: getPeriodId(date),
       period: getPeriodLabel(date),
       date,
+      displayDate: row.cancellation_request_date || date || "No request date",
       client: row.client_name || "Unknown Client",
       status,
       statusVariant: /paused/i.test(status) ? "orange" : "red",
@@ -215,12 +229,7 @@ export function mapApiCancellationsToClientRecords(cancellations) {
       reasonVariant: getReasonVariant(cancellationReason),
       accountManager: row.account_manager || "Unassigned",
       revenueTier: row.revenue_tier || "Backend revenue",
-      revenueAtRisk,
-      recoveredRevenue: Number(row.recovered_revenue) || inferRecoveryRevenue({
-        status,
-        preventable: row.preventable || "Unclear",
-        revenueAtRisk,
-      }),
+      revenueTierValue,
       tone: row.tone || "Unknown",
       preventable: row.preventable || "Unclear",
       preventableVariant: /yes/i.test(row.preventable || "") ? "green" : /no/i.test(row.preventable || "") ? "red" : "blue",
@@ -268,6 +277,29 @@ export function calculateRecoveryRate(data) {
   return (recoveredRevenue / revenueAtRisk) * 100;
 }
 
+export function calculateSaveOpportunityRate(data) {
+  if (!data.length) return 0;
+
+  const saveOpportunityCount = data.filter(
+    (item) => /paused/i.test(item.status) || /^yes$/i.test(item.preventable)
+  ).length;
+
+  return (saveOpportunityCount / data.length) * 100;
+}
+
+export function getTopRevenueTier(data) {
+  if (!data.length) return { label: "No data", count: 0 };
+
+  const counts = data.reduce((map, item) => {
+    const label = item.revenueTier || "Unknown";
+    map.set(label, (map.get(label) || 0) + 1);
+    return map;
+  }, new Map());
+
+  const [label, count] = [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0];
+  return { label, count };
+}
+
 export function getUniqueOptions(data, key) {
   return [...new Set(data.map((item) => item[key]).filter(Boolean))].sort((a, b) => a.localeCompare(b));
 }
@@ -276,10 +308,12 @@ export function filterCancellationData(data, filters) {
   return data.filter((item) => {
     const reasonMatch = !filters.cancellationReason || item.cancellationReason === filters.cancellationReason;
     const managerMatch = !filters.accountManager || item.accountManager === filters.accountManager;
-    const startMatch = !filters.dateRange.from || item.date >= filters.dateRange.from;
-    const endMatch = !filters.dateRange.to || item.date <= filters.dateRange.to;
+    const hasDateFilter = Boolean(filters.dateRange.from || filters.dateRange.to);
+    const hasRequestDate = isValidDateString(item.date);
+    const startMatch = !filters.dateRange.from || (hasRequestDate && item.date >= filters.dateRange.from);
+    const endMatch = !filters.dateRange.to || (hasRequestDate && item.date <= filters.dateRange.to);
 
-    return reasonMatch && managerMatch && startMatch && endMatch;
+    return reasonMatch && managerMatch && (!hasDateFilter || hasRequestDate) && startMatch && endMatch;
   });
 }
 
@@ -290,7 +324,14 @@ export function sortCancellationData(data, sortConfig) {
     const aValue = a[sortConfig.key];
     const bValue = b[sortConfig.key];
 
-    if (sortConfig.key === "revenueAtRisk") return (aValue - bValue) * direction;
+    if (sortConfig.key === "revenueTierValue") return (aValue - bValue) * direction;
+    if (sortConfig.key === "date") {
+      const aHasDate = isValidDateString(aValue);
+      const bHasDate = isValidDateString(bValue);
+      if (aHasDate && !bHasDate) return -1;
+      if (!aHasDate && bHasDate) return 1;
+    }
+
     return String(aValue).localeCompare(String(bValue)) * direction;
   });
 }
@@ -325,14 +366,30 @@ function formatDateLabel(date, granularity) {
 }
 
 export function createCancellationTrendData(data, granularity = "month") {
-  const counts = data.reduce((map, item) => {
+  const datedData = data.filter((item) => isValidDateString(item.date));
+
+  const counts = datedData.reduce((map, item) => {
     const key = granularity === "day" ? item.date : item.date.slice(0, 7);
-    const current = map.get(key) || { key, cancellations: 0, revenueAtRisk: 0 };
+    const current = map.get(key) || { key, cancellations: 0 };
     current.cancellations += 1;
-    current.revenueAtRisk += item.revenueAtRisk;
     map.set(key, current);
     return map;
   }, new Map());
+
+  if (granularity === "day") {
+    const visibleMonths = new Set(datedData.map((item) => item.date.slice(0, 7)));
+
+    if (visibleMonths.size === 1) {
+      const [monthKey] = visibleMonths;
+      const [year, month] = monthKey.split("-").map(Number);
+      const daysInMonth = new Date(year, month, 0).getDate();
+
+      for (let day = 1; day <= daysInMonth; day += 1) {
+        const key = `${monthKey}-${String(day).padStart(2, "0")}`;
+        if (!counts.has(key)) counts.set(key, { key, cancellations: 0 });
+      }
+    }
+  }
 
   return [...counts.values()]
     .sort((a, b) => a.key.localeCompare(b.key))
@@ -347,10 +404,8 @@ export function createReasonBreakdownData(data) {
     const current = map.get(item.cancellationReason) || {
       name: item.cancellationReason,
       cancellations: 0,
-      revenueAtRisk: 0,
     };
     current.cancellations += 1;
-    current.revenueAtRisk += item.revenueAtRisk;
     map.set(item.cancellationReason, current);
     return map;
   }, new Map());
@@ -379,9 +434,11 @@ export function generateInsights(data, trendData) {
 
   const reasonData = createReasonBreakdownData(data);
   const topReason = reasonData[0];
-  const revenueAtRisk = calculateRevenueAtRisk(data);
-  const recoveryRate = calculateRecoveryRate(data);
+  const topRevenueTier = getTopRevenueTier(data);
+  const saveOpportunityRate = calculateSaveOpportunityRate(data);
   const preventableCount = data.filter((item) => /^yes$/i.test(item.preventable)).length;
+  const pausedCount = data.filter((item) => /paused/i.test(item.status)).length;
+  const undatedCount = data.filter((item) => !isValidDateString(item.date)).length;
   const latest = trendData[trendData.length - 1];
   const previous = trendData[trendData.length - 2];
   let trendInsight = "Not enough time-series data to compare retention movement yet.";
@@ -394,12 +451,18 @@ export function generateInsights(data, trendData) {
     trendInsight = `Retention ${direction} by ${Math.abs(delta).toFixed(1)}% versus the previous visible period.`;
   }
 
-  return [
+  const insights = [
     `Most cancellations happen due to ${topReason.name} (${topReason.cancellations} records).`,
     trendInsight,
-    `${formatCurrency(revenueAtRisk)} is currently at risk across the filtered dataset.`,
-    `${preventableCount} cancellations are marked clearly preventable; estimated recovery rate is ${recoveryRate.toFixed(1)}%.`,
+    `${topRevenueTier.label} is the largest client revenue tier in the filtered records (${topRevenueTier.count} records).`,
+    `${preventableCount} cancellations are marked clearly preventable and ${pausedCount} are paused; save opportunity rate is ${saveOpportunityRate.toFixed(1)}%.`,
   ];
+
+  if (undatedCount) {
+    insights.push(`${undatedCount} records are marked Before Tracker and excluded from the request-date trend.`);
+  }
+
+  return insights;
 }
 
 export function formatCurrency(value) {

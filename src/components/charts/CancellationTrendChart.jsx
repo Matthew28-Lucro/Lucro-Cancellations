@@ -16,7 +16,7 @@ function TrendTooltip({ active, payload, label }) {
     <div className="rounded-lg border border-lucro-border bg-lucro-card px-3 py-2 text-[11px] shadow-panel">
       <div className="mb-1 font-bold text-lucro-text">{label}</div>
       <div className="text-lucro-muted">
-        Cancellations: <span className="font-bold text-lucro-rust">{payload[0].value}</span>
+        Requests: <span className="font-bold text-lucro-rust">{payload[0].value}</span>
       </div>
     </div>
   );
@@ -24,7 +24,7 @@ function TrendTooltip({ active, payload, label }) {
 
 export default function CancellationTrendChart({ data, isLoading }) {
   if (isLoading) return <ChartLoadingState />;
-  if (!data.length) return <ChartEmptyState message="No cancellation trend data matches the filters." />;
+  if (!data.length) return <ChartEmptyState message="No dated cancellation requests match the filters." />;
 
   return (
     <div className="h-72 transition duration-300 hover:scale-[1.005]">
@@ -50,7 +50,7 @@ export default function CancellationTrendChart({ data, isLoading }) {
           <Line
             type="monotone"
             dataKey="cancellations"
-            name="Cancellations"
+            name="Requests"
             stroke="#c94020"
             strokeWidth={3}
             dot={{ r: 4, fill: "#c94020", strokeWidth: 0 }}

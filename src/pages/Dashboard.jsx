@@ -16,7 +16,6 @@ import useFilters from "../hooks/useFilters.js";
 import useMetrics from "../hooks/useMetrics.js";
 import usePagination from "../hooks/usePagination.js";
 import { fetchCancellations, fetchMetrics } from "../services/api.js";
-import { formatCurrency } from "../utils/metrics.js";
 
 const VisualAnalyticsSection = lazy(() => import("../components/VisualAnalyticsSection.jsx"));
 
@@ -54,14 +53,14 @@ function makePreventabilityNote(clients) {
 function makeTableRows(clients) {
   return clients.map((client) => ({
     cells: [
-      { text: client.date },
+      { text: client.displayDate || client.date || "No request date" },
       { text: client.client },
       { text: client.status, tagVariant: client.statusVariant },
       { text: client.phase },
       { text: client.cancellationReason, tagVariant: client.reasonVariant },
       { text: client.accountManager },
-      { text: formatCurrency(client.revenueAtRisk) },
-      { text: formatCurrency(client.recoveredRevenue) },
+      { text: client.revenueTier },
+      { text: client.preventable, tagVariant: client.preventableVariant },
       { text: client.leadSource },
       { text: client.clientReason },
     ],

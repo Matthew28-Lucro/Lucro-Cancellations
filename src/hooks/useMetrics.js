@@ -1,22 +1,23 @@
 import { useMemo } from "react";
 import {
-  calculateRecoveryRate,
   calculateRetentionRate,
-  calculateRevenueAtRisk,
+  calculateSaveOpportunityRate,
   createBarItems,
   createCancellationTrendData,
   createPeriodOptions,
   createReasonBreakdownData,
   createRetentionPieData,
   filterCancellationData,
-  formatCurrency,
   generateInsights,
   getUniqueOptions,
+  getTopRevenueTier,
   mapApiCancellationsToClientRecords,
   sortCancellationData,
 } from "../utils/metrics.js";
 
 function buildDynamicKpis(clients) {
+  const topRevenueTier = getTopRevenueTier(clients);
+
   return [
     {
       label: "Total Cancellations",
@@ -31,15 +32,15 @@ function buildDynamicKpis(clients) {
       tone: "ok",
     },
     {
-      label: "Revenue at Risk",
-      value: formatCurrency(calculateRevenueAtRisk(clients)),
-      subtext: "From API revenue field",
+      label: "Top Revenue Tier",
+      value: topRevenueTier.label,
+      subtext: `${topRevenueTier.count} matching records`,
       tone: "warn",
     },
     {
-      label: "Recovery %",
-      value: `${calculateRecoveryRate(clients).toFixed(1)}%`,
-      subtext: "Estimated recoverable revenue",
+      label: "Save Opportunity",
+      value: `${calculateSaveOpportunityRate(clients).toFixed(1)}%`,
+      subtext: "Paused or clearly preventable",
       tone: "accent2",
     },
   ];

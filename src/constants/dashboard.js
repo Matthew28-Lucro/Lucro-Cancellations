@@ -5,22 +5,22 @@ export const APP_META = {
 };
 
 export const CANCELLATION_COLUMNS = [
-  "Date",
+  "Request Date",
   "Client",
   "Status",
   "Phase",
   "Cancellation Reason",
   "Account Manager",
-  "Revenue at Risk",
-  "Recovery",
+  "Revenue Tier",
+  "Preventable",
   "Lead Source",
   "Client Reason",
 ];
 
 export const SORTABLE_COLUMN_MAP = {
-  Date: "date",
+  "Request Date": "date",
   Client: "client",
-  "Revenue at Risk": "revenueAtRisk",
+  "Revenue Tier": "revenueTierValue",
 };
 
 export const INITIAL_FILTERS = {
@@ -30,7 +30,7 @@ export const INITIAL_FILTERS = {
 };
 
 export const INITIAL_SORT = {
-  column: "Date",
+  column: "Request Date",
   key: "date",
   direction: "desc",
 };
