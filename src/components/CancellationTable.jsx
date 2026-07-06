@@ -52,13 +52,15 @@ export default function CancellationTable({
                 {columns.map((column, cellIndex) => {
                   const cell = row.cells[cellIndex] || { text: "" };
                   const isReason = column.toLowerCase().includes("reason") || column.toLowerCase().includes("why");
+                  const isClientReason = column === "Client Reason";
 
                   return (
                     <td
                       key={`${column}-${cellIndex}`}
+                      title={cell.title || (isClientReason ? cell.text : undefined)}
                       className={`border-b border-lucro-border px-2.5 py-2.5 align-top group-last:border-b-0 group-hover:bg-lucro-accent3/5 ${
                         isReason ? "text-lucro-muted" : ""
-                      }`}
+                      } ${isClientReason ? "max-w-[280px] whitespace-normal leading-5" : ""}`}
                     >
                       <Tag variant={cell.tagVariant}>{cell.text}</Tag>
                     </td>

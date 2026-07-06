@@ -59,7 +59,7 @@ function makeTableRows(clients) {
       { text: client.revenueTier },
       { text: client.preventable, tagVariant: client.preventableVariant },
       { text: client.leadSource },
-      { text: client.clientReason },
+      { text: client.clientReasonSummary, title: client.clientReason },
     ],
   }));
 }
@@ -95,7 +95,7 @@ function ErrorPanel({ message, onRetry }) {
       <button
         type="button"
         onClick={onRetry}
-        className="rounded-lg border border-lucro-danger/35 bg-lucro-danger/10 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.06em] text-lucro-danger transition hover:border-lucro-danger hover:bg-lucro-danger/15"
+        className="rounded-lg border border-lucro-danger/35 bg-lucro-danger/10 px-4 py-2 text-[11px] font-bold uppercase text-lucro-danger transition hover:border-lucro-danger hover:bg-lucro-danger/15"
       >
         Retry
       </button>
@@ -187,7 +187,7 @@ function AnalyticsDashboard({
   );
 }
 
-export default function Dashboard() {
+export default function Dashboard({ navigation }) {
   const [state, dispatch] = useReducer(dashboardReducer, initialState);
   const [apiState, setApiState] = useState({
     status: "loading",
@@ -249,6 +249,7 @@ export default function Dashboard() {
 
   return (
     <DashboardLayout
+      navigation={navigation}
       headerProps={{
         ...APP_META,
         period: activePeriodLabel,

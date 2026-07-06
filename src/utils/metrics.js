@@ -172,6 +172,62 @@ function normalizeReasonLabel(reason) {
   return value || "Unclear";
 }
 
+function shortenText(value, maxLength = 92) {
+  const text = String(value || "")
+    .replace(/^"+|"+$/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (!text || text === "-") return "-";
+  if (text.length <= maxLength) return text;
+
+  const sentence = text.match(/^.{20,}?[.!?](?:\s|$)/)?.[0]?.trim();
+  const candidate = sentence && sentence.length <= maxLength ? sentence : text.slice(0, maxLength - 1).trim();
+
+  return `${candidate.replace(/[.,;:\s]+$/, "")}...`;
+}
+
+function summarizeClientReason(value, fallbackReason = "Unclear") {
+  const text = String(value || "").replace(/\s+/g, " ").trim();
+  if (!text || text === "-") return fallbackReason || "-";
+
+  const normalized = text.toLowerCase();
+
+  if (/under the impression|thought our services include|expectation|expected|wasn'?t communicated|not communicated|scope|cfo advisory/i.test(text)) {
+    return "Expectation or communication mismatch around service scope.";
+  }
+
+  if (/(new|regular|local).*?(cpa|accountant|bookkeeper)|accountant\/bookkeeper|tax preparation|consolidate everything|bookkeeping.*?(in house|in-house|internal)|bookkeeping over to another service/i.test(text)) {
+    return "Moved bookkeeping/accounting to CPA or internal team.";
+  }
+
+  if (/cash flow|financial|expense|cost|pricing|refund|charged|business expenses|bottleneck/i.test(text)) {
+    return "Cost or cash-flow pressure drove the cancellation.";
+  }
+
+  if (/closing|closed|sell|selling|sold|ownership|owenership|merger|absorbed|ceased/i.test(text)) {
+    return "Practice closure, sale, or ownership change.";
+  }
+
+  if (/not using|under.?utili|not utiliz|no longer need|not necessary|do not need/i.test(text)) {
+    return "Client no longer needed or was not using the service.";
+  }
+
+  if (/insight|reports?|p&l|value|benefit|not worth|not relevant/i.test(text)) {
+    return "Client did not see enough value in reports or insights.";
+  }
+
+  if (/error|mistake|miscategorized|bookkeeper changed|switched|frustrating|inconsisten|lack of service|service delivery|response|smoothly/i.test(text)) {
+    return "Service issues or bookkeeping changes affected confidence.";
+  }
+
+  if (/startup|start.?up|clinic has grown|reconnect/i.test(normalized)) {
+    return "Early-stage client plans to revisit when the clinic grows.";
+  }
+
+  return shortenText(text);
+}
+
 function normalizeStatus(columns, row) {
   const explicitStatus = getCellText(columns, row, ["status"]);
   if (explicitStatus) return explicitStatus;
@@ -269,6 +325,7 @@ export function mapApiCancellationsToClientRecords(cancellations) {
       preventableVariant: /yes/i.test(row.preventable || "") ? "green" : /no/i.test(row.preventable || "") ? "red" : "blue",
       leadSource: row.lead_source || "Unknown / Not Recorded",
       clientReason: row.client_reason || "-",
+      clientReasonSummary: summarizeClientReason(row.client_reason, cancellationReason),
       raw: row,
     };
   });
