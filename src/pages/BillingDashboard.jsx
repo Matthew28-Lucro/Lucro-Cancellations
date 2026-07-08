@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   Bar,
   BarChart,
@@ -15,10 +15,11 @@ import KpiCard from "../components/KpiCard.jsx";
 import Panel, { PanelDivider } from "../components/Panel.jsx";
 import SectionLabel from "../components/SectionLabel.jsx";
 import Tag from "../components/Tag.jsx";
-import { billingClients, billingTrend } from "../data/billing.js";
+import { fetchBillingSummary } from "../services/billingApi.js";
 
 const PLAN_OPTIONS = ["All Plans", "Annual", "Month-to-month", "Payment plan", "One-time"];
 const STATUS_OPTIONS = ["All Statuses", "Active", "Past due", "Canceling", "Trialing", "Complete"];
+const BILLING_REFRESH_MS = 5 * 60 * 1000;
 
 const currencyFormatter = new Intl.NumberFormat("en-US", {
   maximumFractionDigits: 0,
@@ -114,7 +115,26 @@ function BillingTooltip({ active, payload, label }) {
   );
 }
 
-function BillingFilters({ planFilter, statusFilter, resultCount, onPlanChange, onStatusChange }) {
+function BillingFilters({
+  generatedAt,
+  mode,
+  planFilter,
+  status,
+  statusFilter,
+  resultCount,
+  onPlanChange,
+  onStatusChange,
+}) {
+  const badgeText = mode === "live" ? "Live Stripe" : "Mock Data";
+  const updatedText = generatedAt
+    ? `Last updated ${new Intl.DateTimeFormat("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+        month: "short",
+        day: "numeric",
+      }).format(new Date(generatedAt))}`
+    : "Local preview data";
+
   return (
     <section className="mb-6 rounded-[12px] border border-lucro-border bg-lucro-card p-4 shadow-panel">
       <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
@@ -122,11 +142,11 @@ function BillingFilters({ planFilter, statusFilter, resultCount, onPlanChange, o
           <div className="text-[10px] font-bold uppercase text-lucro-muted">Billing View</div>
           <div className="mt-1 text-[11px] text-lucro-muted">
             Showing <span className="font-bold text-lucro-accent">{resultCount}</span> Stripe-style client records
+            <span className="mx-2 text-lucro-faint">/</span>
+            {status === "loading" ? "Refreshing billing data" : updatedText}
           </div>
         </div>
-        <div className="rounded-md bg-lucro-signal px-3 py-1.5 text-[11px] font-bold text-lucro-text">
-          Mock Data
-        </div>
+        <div className="rounded-md bg-lucro-signal px-3 py-1.5 text-[11px] font-bold text-lucro-text">{badgeText}</div>
       </div>
 
       <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
@@ -174,11 +194,11 @@ function KpiGrid({ items }) {
   );
 }
 
-function RevenueTrendChart() {
+function RevenueTrendChart({ data }) {
   return (
     <div className="h-72">
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={billingTrend} margin={{ top: 12, right: 20, left: -12, bottom: 8 }}>
+        <LineChart data={data} margin={{ top: 12, right: 20, left: -12, bottom: 8 }}>
           <CartesianGrid stroke="#E4E5EA" strokeDasharray="4 4" />
           <XAxis
             dataKey="month"
@@ -354,15 +374,53 @@ function BillingTable({ clients }) {
 export default function BillingDashboard({ navigation }) {
   const [planFilter, setPlanFilter] = useState("All Plans");
   const [statusFilter, setStatusFilter] = useState("All Statuses");
+  const [billingState, setBillingState] = useState({
+    clients: [],
+    error: "",
+    generatedAt: null,
+    mode: "mock",
+    status: "loading",
+    trend: [],
+    warning: "",
+  });
+
+  useEffect(() => {
+    let isMounted = true;
+
+    async function loadBillingSummary() {
+      setBillingState((current) => ({ ...current, status: "loading" }));
+      const summary = await fetchBillingSummary();
+
+      if (!isMounted) return;
+
+      setBillingState({
+        clients: summary.clients,
+        error: summary.error || "",
+        generatedAt: summary.generatedAt,
+        mode: summary.mode,
+        status: "success",
+        trend: summary.trend,
+        warning: summary.warning || "",
+      });
+    }
+
+    loadBillingSummary();
+    const refresh = window.setInterval(loadBillingSummary, BILLING_REFRESH_MS);
+
+    return () => {
+      isMounted = false;
+      window.clearInterval(refresh);
+    };
+  }, []);
 
   const filteredClients = useMemo(
     () =>
-      billingClients.filter((client) => {
+      billingState.clients.filter((client) => {
         const matchesPlan = planFilter === "All Plans" || client.planType === planFilter;
         const matchesStatus = statusFilter === "All Statuses" || client.status === statusFilter;
         return matchesPlan && matchesStatus;
       }),
-    [planFilter, statusFilter]
+    [billingState.clients, planFilter, statusFilter]
   );
 
   const planData = useMemo(() => groupByPlan(filteredClients), [filteredClients]);
@@ -416,16 +474,28 @@ export default function BillingDashboard({ navigation }) {
         brand: "Lucro - Billing Operations",
         titlePrefix: "Billing",
         titleAccent: "Dashboard",
-        period: "Stripe Mirror",
+        period: billingState.mode === "live" ? "Live Stripe" : "Stripe Mirror",
       }}
     >
       <BillingFilters
+        generatedAt={billingState.generatedAt}
+        mode={billingState.mode}
         planFilter={planFilter}
+        status={billingState.status}
         statusFilter={statusFilter}
         resultCount={filteredClients.length}
         onPlanChange={setPlanFilter}
         onStatusChange={setStatusFilter}
       />
+
+      {billingState.error || billingState.warning ? (
+        <div className="mb-6 rounded-[12px] border border-lucro-border bg-lucro-card px-4 py-3 text-[12px] leading-6 text-lucro-muted shadow-panel">
+          <strong className="text-lucro-text">
+            {billingState.mode === "live" ? "Billing API" : "Mock Mode"}:
+          </strong>{" "}
+          {billingState.error || billingState.warning}
+        </div>
+      ) : null}
 
       <SectionLabel>Revenue Snapshot</SectionLabel>
       <KpiGrid items={kpis} />
@@ -433,7 +503,7 @@ export default function BillingDashboard({ navigation }) {
       <SectionLabel>Billing Movement</SectionLabel>
       <div className="grid gap-4 xl:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
         <Panel title="Collected vs Invoiced" titleTone="accent2">
-          <RevenueTrendChart />
+          <RevenueTrendChart data={billingState.trend} />
         </Panel>
         <Panel title="Contract Value by Plan" titleTone="accent">
           <PlanRevenueChart data={planData} />
