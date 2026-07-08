@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
+import BillingDashboard from "./pages/BillingDashboard.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import DesignSystem from "./pages/DesignSystem.jsx";
 
 function getCurrentPage() {
+  if (window.location.hash === "#billing") return "billing";
   return window.location.hash === "#design" ? "design" : "dashboard";
 }
 
 function PageSwitcher({ currentPage }) {
   const links = [
-    { id: "dashboard", label: "Dashboard", href: "#" },
+    { id: "dashboard", label: "Cancellation Dashboard", href: "#" },
+    { id: "billing", label: "Billing Dashboard", href: "#billing" },
     { id: "design", label: "Design System", href: "#design" },
   ];
 
@@ -49,6 +52,10 @@ export default function App() {
   }, []);
 
   const navigation = <PageSwitcher currentPage={currentPage} />;
+
+  if (currentPage === "billing") {
+    return <BillingDashboard navigation={navigation} />;
+  }
 
   return currentPage === "design" ? (
     <DesignSystem navigation={navigation} />
