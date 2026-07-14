@@ -236,6 +236,7 @@ export default function Dashboard({ navigation }) {
   } = useMetrics({
     cancellations: apiState.cancellations,
     filters: debouncedFilters,
+    optionFilters: filters,
     sort: state.sort,
   });
 

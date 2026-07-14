@@ -48,13 +48,13 @@ function buildDynamicKpis(clients) {
   ];
 }
 
-export default function useMetrics({ cancellations, filters, sort }) {
+export default function useMetrics({ cancellations, filters, optionFilters = filters, sort }) {
   const allClients = useMemo(() => mapApiCancellationsToClientRecords(cancellations), [cancellations]);
 
   const cancellationReasons = useMemo(() => getUniqueOptions(allClients, "cancellationReason"), [allClients]);
   const accountManagers = useMemo(() => getUniqueOptions(allClients, "accountManager"), [allClients]);
   const yearOptions = useMemo(() => createYearOptions(allClients), [allClients]);
-  const monthOptions = useMemo(() => createMonthOptions(allClients, filters.year), [allClients, filters.year]);
+  const monthOptions = useMemo(() => createMonthOptions(allClients, optionFilters.year), [allClients, optionFilters.year]);
   const activePeriodLabel = useMemo(() => getActivePeriodLabel(filters), [filters]);
   const globalFilteredClients = useMemo(
     () => filterCancellationData(allClients, filters),
