@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
-import BillingDashboard from "./pages/BillingDashboard.jsx";
+import { lazy, Suspense, useEffect, useState } from "react";
 import Dashboard from "./pages/Dashboard.jsx";
-import DesignSystem from "./pages/DesignSystem.jsx";
+
+const BillingDashboard = lazy(() => import("./pages/BillingDashboard.jsx"));
+const DesignSystem = lazy(() => import("./pages/DesignSystem.jsx"));
 
 function getCurrentPage() {
   if (window.location.hash === "#billing") return "billing";
@@ -54,12 +55,27 @@ export default function App() {
   const navigation = <PageSwitcher currentPage={currentPage} />;
 
   if (currentPage === "billing") {
-    return <BillingDashboard navigation={navigation} />;
+    return (
+      <Suspense fallback={<PageLoading navigation={navigation} />}>
+        <BillingDashboard navigation={navigation} />
+      </Suspense>
+    );
   }
 
   return currentPage === "design" ? (
-    <DesignSystem navigation={navigation} />
+    <Suspense fallback={<PageLoading navigation={navigation} />}>
+      <DesignSystem navigation={navigation} />
+    </Suspense>
   ) : (
     <Dashboard navigation={navigation} />
+  );
+}
+
+function PageLoading({ navigation }) {
+  return (
+    <main className="min-h-screen bg-lucro-bg px-4 py-6 font-sans text-lucro-text sm:px-6 sm:py-8">
+      {navigation}
+      <div className="h-80 animate-pulse rounded-[14px] border border-lucro-border bg-lucro-card shadow-panel" />
+    </main>
   );
 }

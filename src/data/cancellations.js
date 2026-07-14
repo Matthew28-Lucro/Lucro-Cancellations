@@ -1,11 +1,12 @@
-// Generated from Deliverables - Live Cancellations List (1).csv.
+// Generated from Lucro - Official Cancellation Tracker - __Churn Documentation__ (2).csv.
 // Deliberately excludes client emails and personal contact names for the public dashboard bundle.
 
 export const cancellationSourceSummary = {
-  "source_file": "Deliverables - Live Cancellations List (1).csv",
-  "row_count": 147,
-  "dated_records": 79,
-  "undated_records": 68
+  "source_file": "Lucro - Official Cancellation Tracker - __Churn Documentation__ (2).csv",
+  "row_count": 150,
+  "dated_records": 82,
+  "undated_records": 68,
+  "june_2026_records": 12
 };
 
 export const localCancellations = [
@@ -30,8 +31,7 @@ export const localCancellations = [
     "client_reason": "-",
     "time_phase": "Onboarding",
     "months_with_lucro": "0",
-    "estimated_days_in_onboarding": "Onboarding",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "Onboarding"
   },
   {
     "id": "002-optimal-health-center-llc",
@@ -54,8 +54,7 @@ export const localCancellations = [
     "client_reason": "-",
     "time_phase": "Post-Onboarding (1 - 3 Months)",
     "months_with_lucro": "1",
-    "estimated_days_in_onboarding": "Onboarding",
-    "recovered_revenue": 11000
+    "estimated_days_in_onboarding": "Onboarding"
   },
   {
     "id": "003-ac-chiropractic",
@@ -78,8 +77,7 @@ export const localCancellations = [
     "client_reason": "Client owes information (Financial sheet not updating or pulling wrong data)",
     "time_phase": "Post-Onboarding (1 - 3 Months)",
     "months_with_lucro": "1",
-    "estimated_days_in_onboarding": "24",
-    "recovered_revenue": 1000
+    "estimated_days_in_onboarding": "24"
   },
   {
     "id": "004-canyon-chiropractic",
@@ -102,8 +100,7 @@ export const localCancellations = [
     "client_reason": "Dr Josiah informed they're cancelling - Last report Aug",
     "time_phase": "Post-Onboarding (1 - 3 Months)",
     "months_with_lucro": "1",
-    "estimated_days_in_onboarding": "78",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "78"
   },
   {
     "id": "005-cfl-health-clinics",
@@ -126,8 +123,7 @@ export const localCancellations = [
     "client_reason": "Entity absorbed in new entity NexMed",
     "time_phase": "Post-Onboarding (1 - 3 Months)",
     "months_with_lucro": "1",
-    "estimated_days_in_onboarding": "114",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "114"
   },
   {
     "id": "006-sebastian-castelli",
@@ -150,8 +146,7 @@ export const localCancellations = [
     "client_reason": "Still a client but closing one of his practice location",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "3",
-    "estimated_days_in_onboarding": "91",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "91"
   },
   {
     "id": "007-connelly-chiropractic-wellness",
@@ -174,8 +169,7 @@ export const localCancellations = [
     "client_reason": "-",
     "time_phase": "Post-Onboarding (1 - 3 Months)",
     "months_with_lucro": "3",
-    "estimated_days_in_onboarding": "104",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "104"
   },
   {
     "id": "008-clear-health-and-wellness",
@@ -198,8 +192,7 @@ export const localCancellations = [
     "client_reason": "Just wanted to get an overview of where I’m at and what direction I need to be going. I never really had much interest in the bookkeeping aspect of the service but I figured I’d give it a shot. I’ve determined the value, for me specifically, just isn’t there.",
     "time_phase": "Post-Onboarding (1 - 3 Months)",
     "months_with_lucro": "2",
-    "estimated_days_in_onboarding": "85",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "85"
   },
   {
     "id": "009-vitality-therapy-performance",
@@ -222,8 +215,7 @@ export const localCancellations = [
     "client_reason": "-",
     "time_phase": "Unknown",
     "months_with_lucro": "#NUM!",
-    "estimated_days_in_onboarding": "",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": ""
   },
   {
     "id": "010-park-city-chirosports-inc",
@@ -246,8 +238,7 @@ export const localCancellations = [
     "client_reason": "Paused Payments/No response - Second month since inital signup",
     "time_phase": "Onboarding",
     "months_with_lucro": "1",
-    "estimated_days_in_onboarding": "1",
-    "recovered_revenue": 11250
+    "estimated_days_in_onboarding": "1"
   },
   {
     "id": "011-northwest-texas-spine-center",
@@ -270,8 +261,7 @@ export const localCancellations = [
     "client_reason": "No response to continue after multiple times of trying to contact",
     "time_phase": "Post-Onboarding (1 - 3 Months)",
     "months_with_lucro": "1",
-    "estimated_days_in_onboarding": "Onboarding",
-    "recovered_revenue": 6000
+    "estimated_days_in_onboarding": "Onboarding"
   },
   {
     "id": "012-vkp-medical-pllc",
@@ -294,8 +284,7 @@ export const localCancellations = [
     "client_reason": "Paused Payments (2m paid)- Check back with them at Mon Oct 22 about getting started",
     "time_phase": "Onboarding",
     "months_with_lucro": "0",
-    "estimated_days_in_onboarding": "Onboarding",
-    "recovered_revenue": 11250
+    "estimated_days_in_onboarding": "Onboarding"
   },
   {
     "id": "013-avenue-one-chiropractic",
@@ -318,8 +307,7 @@ export const localCancellations = [
     "client_reason": "Was already using data Driven Practice (using data synchronization) and bookkeeping was already included",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "6",
-    "estimated_days_in_onboarding": "60",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "60"
   },
   {
     "id": "014-white-bison-well-being",
@@ -342,8 +330,7 @@ export const localCancellations = [
     "client_reason": "-",
     "time_phase": "Onboarding",
     "months_with_lucro": "3",
-    "estimated_days_in_onboarding": "61",
-    "recovered_revenue": 15750
+    "estimated_days_in_onboarding": "61"
   },
   {
     "id": "015-revivo",
@@ -366,8 +353,7 @@ export const localCancellations = [
     "client_reason": "It wasn't communicated that both of them should receive the report and the team kept sending it to only of the practice owners not both",
     "time_phase": "Post-Onboarding (1 - 3 Months)",
     "months_with_lucro": "3",
-    "estimated_days_in_onboarding": "77",
-    "recovered_revenue": 22500
+    "estimated_days_in_onboarding": "77"
   },
   {
     "id": "016-functional-health-stl-llc",
@@ -390,8 +376,7 @@ export const localCancellations = [
     "client_reason": "-",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "4",
-    "estimated_days_in_onboarding": "31",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "31"
   },
   {
     "id": "017-the-movement-schopp",
@@ -414,8 +399,7 @@ export const localCancellations = [
     "client_reason": "-",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "4",
-    "estimated_days_in_onboarding": "Ongoing",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "Ongoing"
   },
   {
     "id": "018-pure-chiropractic-wellness",
@@ -438,8 +422,7 @@ export const localCancellations = [
     "client_reason": "Not paying - paused. Wants us to reach out again in October.",
     "time_phase": "Onboarding",
     "months_with_lucro": "0",
-    "estimated_days_in_onboarding": "Onboarding",
-    "recovered_revenue": 15750
+    "estimated_days_in_onboarding": "Onboarding"
   },
   {
     "id": "019-carrie-a-ousley",
@@ -462,8 +445,7 @@ export const localCancellations = [
     "client_reason": "-",
     "time_phase": "Onboarding",
     "months_with_lucro": "",
-    "estimated_days_in_onboarding": "",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": ""
   },
   {
     "id": "020-blue-hills-chiropractic",
@@ -486,8 +468,7 @@ export const localCancellations = [
     "client_reason": "No additional information provided.",
     "time_phase": "Onboarding",
     "months_with_lucro": "",
-    "estimated_days_in_onboarding": "",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": ""
   },
   {
     "id": "021-tilson-chiropractic-familycare-inc",
@@ -510,8 +491,7 @@ export const localCancellations = [
     "client_reason": "-",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "7",
-    "estimated_days_in_onboarding": "8",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "8"
   },
   {
     "id": "022-louisville-spine-and-wellness",
@@ -534,8 +514,7 @@ export const localCancellations = [
     "client_reason": "Cancelled 01/03/2025 - Financial Problems. wants to come back in april; but will be charged for the other months.",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "8",
-    "estimated_days_in_onboarding": "128",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "128"
   },
   {
     "id": "023-caz-goodman-dc-pa",
@@ -558,8 +537,7 @@ export const localCancellations = [
     "client_reason": "No feedback didn't want to meet",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "5",
-    "estimated_days_in_onboarding": "134",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "134"
   },
   {
     "id": "024-unwind-chiropractic-wellness-llc",
@@ -582,8 +560,7 @@ export const localCancellations = [
     "client_reason": "I would like to keep costs down and continue doing bookkeeping in house.",
     "time_phase": "Post-Onboarding (1 - 3 Months)",
     "months_with_lucro": "2",
-    "estimated_days_in_onboarding": "55",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "55"
   },
   {
     "id": "025-roberts-family-and-sports-chiropractic",
@@ -606,8 +583,7 @@ export const localCancellations = [
     "client_reason": "actively looking at selling the practice",
     "time_phase": "Onboarding",
     "months_with_lucro": "2",
-    "estimated_days_in_onboarding": "31",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "31"
   },
   {
     "id": "026-bb-wellness",
@@ -630,8 +606,7 @@ export const localCancellations = [
     "client_reason": "Will use local CPA he's used before",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "8",
-    "estimated_days_in_onboarding": "92",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "92"
   },
   {
     "id": "027-perhealth-chiropractic-wellness-center-inc",
@@ -654,8 +629,7 @@ export const localCancellations = [
     "client_reason": "Cancelled because she wanted to move to a local bookkeeeper. Came back because she realized our service was better. But has now found accountant who specializes in chiropractic clinic and wants him to handle everything",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "9",
-    "estimated_days_in_onboarding": "86",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "86"
   },
   {
     "id": "028-windmill-chiropractic",
@@ -678,8 +652,7 @@ export const localCancellations = [
     "client_reason": "Wants to do the bookeeping themselves Refunded 02/13",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "5",
-    "estimated_days_in_onboarding": "31",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "31"
   },
   {
     "id": "029-northwest-chiropractic-center",
@@ -702,8 +675,7 @@ export const localCancellations = [
     "client_reason": "-",
     "time_phase": "Onboarding",
     "months_with_lucro": "5",
-    "estimated_days_in_onboarding": "Onboarding",
-    "recovered_revenue": 11000
+    "estimated_days_in_onboarding": "Onboarding"
   },
   {
     "id": "030-dupre-lifestyle-associates-llc-dba-empower-chiropractic",
@@ -726,8 +698,7 @@ export const localCancellations = [
     "client_reason": "Choosing someone local that understands my brand’s mission and vision and I’d like to support a local business with that responsibility.",
     "time_phase": "Onboarding",
     "months_with_lucro": "3",
-    "estimated_days_in_onboarding": "31",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "31"
   },
   {
     "id": "031-eagan-family-chiropractic-massage",
@@ -750,8 +721,7 @@ export const localCancellations = [
     "client_reason": "She's selling her practice- lots of uncatz pending. April report has been done",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "13",
-    "estimated_days_in_onboarding": "94",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "94"
   },
   {
     "id": "032-trinity-integrated-health-wellness-center",
@@ -774,8 +744,7 @@ export const localCancellations = [
     "client_reason": "Could not find information - Refunded March",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "12",
-    "estimated_days_in_onboarding": "60",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "60"
   },
   {
     "id": "033-nbctmh-dc-pllc",
@@ -798,8 +767,7 @@ export const localCancellations = [
     "client_reason": "Pivoted and started coaching with ddp as well as blueprint and they will be handling our books to integrate with the blueIQ system. I appreciate all the help and guidance and will continue to refer docs to you guys!",
     "time_phase": "Onboarding",
     "months_with_lucro": "6",
-    "estimated_days_in_onboarding": "Onboarding",
-    "recovered_revenue": 6000
+    "estimated_days_in_onboarding": "Onboarding"
   },
   {
     "id": "034-c-a-f-e-of-life-chiropractic",
@@ -822,8 +790,7 @@ export const localCancellations = [
     "client_reason": "Needs to cut cost because practice isn't going well",
     "time_phase": "Onboarding",
     "months_with_lucro": "6",
-    "estimated_days_in_onboarding": "188",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "188"
   },
   {
     "id": "035-paun-family-chiropractic-and-wellness",
@@ -846,8 +813,7 @@ export const localCancellations = [
     "client_reason": "Client decided to move back to his old Bookkeeper, who was working with his CPA.",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "4",
-    "estimated_days_in_onboarding": "44",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "44"
   },
   {
     "id": "036-cypress-creek-chiropractic-and-wellness",
@@ -870,8 +836,7 @@ export const localCancellations = [
     "client_reason": "Mitze Richeson (Doctor's wife and co owner) will be taking over the bookkeeping so they can better handle their money",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "5",
-    "estimated_days_in_onboarding": "92",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "92"
   },
   {
     "id": "037-true-potential-chiropractic",
@@ -894,8 +859,7 @@ export const localCancellations = [
     "client_reason": "My accountant/bookkeeper is unhappy with the changes being made in quickbooks and it doesn't seem like a good idea to keep both.",
     "time_phase": "Post-Onboarding (1 - 3 Months)",
     "months_with_lucro": "3",
-    "estimated_days_in_onboarding": "62",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "62"
   },
   {
     "id": "038-crossroads-brain-spine",
@@ -918,8 +882,7 @@ export const localCancellations = [
     "client_reason": "-",
     "time_phase": "Post-Onboarding (1 - 3 Months)",
     "months_with_lucro": "3",
-    "estimated_days_in_onboarding": "72",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "72"
   },
   {
     "id": "039-north-point-chiropractic",
@@ -942,8 +905,7 @@ export const localCancellations = [
     "client_reason": "Client is not doing well financially and felt that she was not using the Lucro offering to justify the amount.",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "9",
-    "estimated_days_in_onboarding": "31",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "31"
   },
   {
     "id": "040-complete-care-chiropractic",
@@ -966,8 +928,7 @@ export const localCancellations = [
     "client_reason": "Could no longer keep lucro as bookkkeeper due cost. April last report",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "8",
-    "estimated_days_in_onboarding": "33",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "33"
   },
   {
     "id": "041-creekside-chiropractic",
@@ -990,8 +951,7 @@ export const localCancellations = [
     "client_reason": "Went back to my old accountant",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "4",
-    "estimated_days_in_onboarding": "72",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "72"
   },
   {
     "id": "042-chiro-health-spa-norwood",
@@ -1014,8 +974,7 @@ export const localCancellations = [
     "client_reason": "Not using the resources provided, no ROI on the service. Will be investing the money in a new marketing company",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "10",
-    "estimated_days_in_onboarding": "85",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "85"
   },
   {
     "id": "043-epic-family-chiropractic",
@@ -1038,8 +997,7 @@ export const localCancellations = [
     "client_reason": "-",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "7",
-    "estimated_days_in_onboarding": "106",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "106"
   },
   {
     "id": "044-adio-properties",
@@ -1062,8 +1020,7 @@ export const localCancellations = [
     "client_reason": "Dr Tony need to get a quote from CPA to get 2020 to 2024 done & filed. If we're cheaper we'll do 2020 to date",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "7",
-    "estimated_days_in_onboarding": "Onboarding",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "Onboarding"
   },
   {
     "id": "045-ballerini-chiropractic-offices",
@@ -1086,8 +1043,7 @@ export const localCancellations = [
     "client_reason": "Practice sold after owner suffered a stroke. May 2025 last report",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "5",
-    "estimated_days_in_onboarding": "57",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "57"
   },
   {
     "id": "046-balance-medical-and-rehab",
@@ -1110,8 +1066,7 @@ export const localCancellations = [
     "client_reason": "Very dificult to maintain contact with the client which is why Onboarding took so long. He initally wanted to leave and was offer 3 months free 2 of those we could not get him to give us access to qb.",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "4",
-    "estimated_days_in_onboarding": "118",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "118"
   },
   {
     "id": "047-foundations-chiropractic-pure-chiropractic-braselton",
@@ -1134,8 +1089,7 @@ export const localCancellations = [
     "client_reason": "hired a CFO who would be specific to our office and a few other chiropractic offices in our inner circle",
     "time_phase": "Onboarding",
     "months_with_lucro": "1",
-    "estimated_days_in_onboarding": "Onboarding",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "Onboarding"
   },
   {
     "id": "048-chiro-studio",
@@ -1158,8 +1112,7 @@ export const localCancellations = [
     "client_reason": "Cancelled becuase he thought our services include recurring One-on-one CFO advisory, so we gave him 3 months for free to try our services, he didn't respond to any further requests for reconnecting bank accounts or uncategorized transactions and when Shinaed followed up today, he asked we cancel services",
     "time_phase": "Onboarding",
     "months_with_lucro": "0",
-    "estimated_days_in_onboarding": "40",
-    "recovered_revenue": 22500
+    "estimated_days_in_onboarding": "40"
   },
   {
     "id": "049-nathans-family-chiropractic",
@@ -1182,8 +1135,7 @@ export const localCancellations = [
     "client_reason": "Will not renew contract after year of service",
     "time_phase": "Post-Onboarding (1 - 3 Months)",
     "months_with_lucro": "4",
-    "estimated_days_in_onboarding": "94",
-    "recovered_revenue": 6000
+    "estimated_days_in_onboarding": "94"
   },
   {
     "id": "050-spinewell-disc-joint-center-beach",
@@ -1206,8 +1158,7 @@ export const localCancellations = [
     "client_reason": "Will not renew contract after year of service",
     "time_phase": "Post-Onboarding (1 - 3 Months)",
     "months_with_lucro": "0",
-    "estimated_days_in_onboarding": "270",
-    "recovered_revenue": 6000
+    "estimated_days_in_onboarding": "270"
   },
   {
     "id": "051-spinewell-disc-joint-center-baymeadows",
@@ -1230,8 +1181,7 @@ export const localCancellations = [
     "client_reason": "Will not renew contract after year of service",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "0",
-    "estimated_days_in_onboarding": "270",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "270"
   },
   {
     "id": "052-holistic-healing",
@@ -1254,8 +1204,7 @@ export const localCancellations = [
     "client_reason": "Needs to have cut overhead cost and would like to come back later",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "14",
-    "estimated_days_in_onboarding": "31",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "31"
   },
   {
     "id": "053-beyond-chiropractic",
@@ -1278,8 +1227,7 @@ export const localCancellations = [
     "client_reason": "Accountant suggest since her business is small she should do her own bookkeeping, she didn't interact with the dashboard or assisted the Q/A",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "5",
-    "estimated_days_in_onboarding": "83",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "83"
   },
   {
     "id": "054-pure-chiropractic-braselton",
@@ -1302,8 +1250,7 @@ export const localCancellations = [
     "client_reason": "Going a different direction didn't want to meet.",
     "time_phase": "Onboarding",
     "months_with_lucro": "3",
-    "estimated_days_in_onboarding": "Onboarding",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "Onboarding"
   },
   {
     "id": "055-pro-active-care-physical-medicine",
@@ -1326,8 +1273,7 @@ export const localCancellations = [
     "client_reason": "Personal problems: herniated 3 discs in her back and couldn't work last month and her mom died early aug. Trying to scale back on the number of activities she's involved in.",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "7",
-    "estimated_days_in_onboarding": "78",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "78"
   },
   {
     "id": "056-clearfield-chiropractic-center",
@@ -1350,8 +1296,7 @@ export const localCancellations = [
     "client_reason": "-",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "8",
-    "estimated_days_in_onboarding": "83",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "83"
   },
   {
     "id": "057-all-seasons-integrative-health",
@@ -1374,8 +1319,7 @@ export const localCancellations = [
     "client_reason": "Suffered a stroke and closed down his business in July",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "13",
-    "estimated_days_in_onboarding": "65",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "65"
   },
   {
     "id": "058-recoverrx-physical-therapy",
@@ -1398,8 +1342,7 @@ export const localCancellations = [
     "client_reason": "Moved bookkeeping in-house, PT client and does not feel like he gets the value of the service compared to managing in-house.",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "19",
-    "estimated_days_in_onboarding": "80",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "80"
   },
   {
     "id": "059-minh-tran-chiropractic",
@@ -1422,8 +1365,7 @@ export const localCancellations = [
     "client_reason": "-",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "12",
-    "estimated_days_in_onboarding": "58",
-    "recovered_revenue": 6000
+    "estimated_days_in_onboarding": "58"
   },
   {
     "id": "060-alcoa-chiropractic-center",
@@ -1446,8 +1388,7 @@ export const localCancellations = [
     "client_reason": "-",
     "time_phase": "Onboarding",
     "months_with_lucro": "2",
-    "estimated_days_in_onboarding": "Onboarding",
-    "recovered_revenue": 11000
+    "estimated_days_in_onboarding": "Onboarding"
   },
   {
     "id": "061-restructured-chiropractic",
@@ -1470,8 +1411,7 @@ export const localCancellations = [
     "client_reason": "-",
     "time_phase": "Post-Onboarding (1 - 3 Months)",
     "months_with_lucro": "2",
-    "estimated_days_in_onboarding": "80",
-    "recovered_revenue": 11000
+    "estimated_days_in_onboarding": "80"
   },
   {
     "id": "062-optimize-wellness-center",
@@ -1494,8 +1434,7 @@ export const localCancellations = [
     "client_reason": "-",
     "time_phase": "Post-Onboarding (1 - 3 Months)",
     "months_with_lucro": "3",
-    "estimated_days_in_onboarding": "61",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "61"
   },
   {
     "id": "063-health-1st-chiropractic-wellness",
@@ -1518,8 +1457,7 @@ export const localCancellations = [
     "client_reason": "-",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "10",
-    "estimated_days_in_onboarding": "Ongoing",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "Ongoing"
   },
   {
     "id": "064-difrancesco-health-and-wellness",
@@ -1542,8 +1480,7 @@ export const localCancellations = [
     "client_reason": "Practice sold",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "13",
-    "estimated_days_in_onboarding": "101",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "101"
   },
   {
     "id": "065-harborside-chiropractic-pllc",
@@ -1566,8 +1503,7 @@ export const localCancellations = [
     "client_reason": "Hired inhouse bookkeeper",
     "time_phase": "Onboarding",
     "months_with_lucro": "6",
-    "estimated_days_in_onboarding": "30",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "30"
   },
   {
     "id": "066-family-first-chiropractic",
@@ -1590,8 +1526,7 @@ export const localCancellations = [
     "client_reason": "-",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "8",
-    "estimated_days_in_onboarding": "89",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "89"
   },
   {
     "id": "067-alignlife-ooltewah",
@@ -1614,8 +1549,7 @@ export const localCancellations = [
     "client_reason": "-",
     "time_phase": "Onboarding",
     "months_with_lucro": "0",
-    "estimated_days_in_onboarding": "Onboarding",
-    "recovered_revenue": 1000
+    "estimated_days_in_onboarding": "Onboarding"
   },
   {
     "id": "068-integrity-chiropractic-and-wellness",
@@ -1638,8 +1572,7 @@ export const localCancellations = [
     "client_reason": "-",
     "time_phase": "Unknown",
     "months_with_lucro": "7",
-    "estimated_days_in_onboarding": "143",
-    "recovered_revenue": 2500
+    "estimated_days_in_onboarding": "143"
   },
   {
     "id": "069-pangea-chiropractic",
@@ -1662,8 +1595,7 @@ export const localCancellations = [
     "client_reason": "The client did not know that we were going to change the chart of accounts and did not want to continue past the initial onboarding call",
     "time_phase": "Onboarding",
     "months_with_lucro": "0",
-    "estimated_days_in_onboarding": "0",
-    "recovered_revenue": 7500
+    "estimated_days_in_onboarding": "0"
   },
   {
     "id": "070-dimartino-chiropractic-center",
@@ -1686,8 +1618,7 @@ export const localCancellations = [
     "client_reason": "You guys are amazing but I was already fluent in reading a P&L and knowing what we're doing well and what we're not. I only started using Lucro because Josiah and Adam asked me to test it out for free so I could promote it to my coaching clients. Let me know what I need to do.",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "21",
-    "estimated_days_in_onboarding": "64",
-    "recovered_revenue": 6000
+    "estimated_days_in_onboarding": "64"
   },
   {
     "id": "071-green-circle-wellness",
@@ -1710,8 +1641,7 @@ export const localCancellations = [
     "client_reason": "My CFO and I can manage our needs through our EMR platform and QuickBooks.",
     "time_phase": "Post-Onboarding (1 - 3 Months)",
     "months_with_lucro": "3",
-    "estimated_days_in_onboarding": "59",
-    "recovered_revenue": 6000
+    "estimated_days_in_onboarding": "59"
   },
   {
     "id": "072-texas-functional-health-centers",
@@ -1734,8 +1664,7 @@ export const localCancellations = [
     "client_reason": "We will be transitioning our bookkeeping over to another service. The primary reason for this change is that the new provider will also be handling our tax preparation and tax-related billing, allowing us to consolidate everything under one team. Problem Mentioned in Cancellations: Just more continuity. Switching the bookkeepers and then having to remind the bookkeeper to clean up my account",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "14",
-    "estimated_days_in_onboarding": "135",
-    "recovered_revenue": 45000
+    "estimated_days_in_onboarding": "135"
   },
   {
     "id": "073-optimize-chiropractic",
@@ -1758,8 +1687,7 @@ export const localCancellations = [
     "client_reason": "We hired a company to take over finances in our office so we no longer need bookkeeping.",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "13",
-    "estimated_days_in_onboarding": "95",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "95"
   },
   {
     "id": "074-100-chiro-burell",
@@ -1782,8 +1710,7 @@ export const localCancellations = [
     "client_reason": "The client's practice ceased operasions",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "12",
-    "estimated_days_in_onboarding": "66",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "66"
   },
   {
     "id": "075-independence-city-holdings",
@@ -1806,8 +1733,7 @@ export const localCancellations = [
     "client_reason": "The client's practice ceased operations",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "12",
-    "estimated_days_in_onboarding": "66",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "66"
   },
   {
     "id": "076-dr-lea-cornish",
@@ -1830,8 +1756,7 @@ export const localCancellations = [
     "client_reason": "I'm just not seeing anything I don't already know. It’s a pretty picture, but I'm already aware of what it’s telling me.",
     "time_phase": "Onboarding",
     "months_with_lucro": "11",
-    "estimated_days_in_onboarding": "85",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "85"
   },
   {
     "id": "077-fiorini-chiropractic-center",
@@ -1854,8 +1779,7 @@ export const localCancellations = [
     "client_reason": "Our CPA does all of this for us. We would like to cancel your services following our December 2025 report. Thank you all for your help in understanding our numbers.",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "8",
-    "estimated_days_in_onboarding": "49",
-    "recovered_revenue": 6000
+    "estimated_days_in_onboarding": "49"
   },
   {
     "id": "078-south-florida-injury-centers",
@@ -1878,8 +1802,7 @@ export const localCancellations = [
     "client_reason": "Pricing concerns, Limited value or unclear benefits",
     "time_phase": "Onboarding",
     "months_with_lucro": "3",
-    "estimated_days_in_onboarding": "45",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "45"
   },
   {
     "id": "079-tinsley-surgical",
@@ -1902,8 +1825,7 @@ export const localCancellations = [
     "client_reason": "Signed up during a webinar and did not understand what we do at Lucro and was therefore was shocked when we asked for personalized financial information and backed out.",
     "time_phase": "Onboarding",
     "months_with_lucro": "1",
-    "estimated_days_in_onboarding": "Onboarding",
-    "recovered_revenue": 7500
+    "estimated_days_in_onboarding": "Onboarding"
   },
   {
     "id": "080-collaborative-medical",
@@ -1926,8 +1848,7 @@ export const localCancellations = [
     "client_reason": "No longer need bookkeeping/financial services, We felt a lot of transactions were in the wrong place so my accountant was spending hours going back thru. So it was as if I was paying twice for the same thing",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "17",
-    "estimated_days_in_onboarding": "102",
-    "recovered_revenue": 45000
+    "estimated_days_in_onboarding": "102"
   },
   {
     "id": "081-mukilteo-chiropractic-clinic",
@@ -1950,8 +1871,7 @@ export const localCancellations = [
     "client_reason": "I have learned about my practice.",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "16",
-    "estimated_days_in_onboarding": "86",
-    "recovered_revenue": 3500
+    "estimated_days_in_onboarding": "86"
   },
   {
     "id": "082-topline-chiropractic",
@@ -1974,8 +1894,7 @@ export const localCancellations = [
     "client_reason": "CPA taking over services",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "15",
-    "estimated_days_in_onboarding": "79",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "79"
   },
   {
     "id": "083-optimal-health-solutions",
@@ -1998,8 +1917,7 @@ export const localCancellations = [
     "client_reason": "It has become a financial strain to continue our partnership.",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "8",
-    "estimated_days_in_onboarding": "118",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "118"
   },
   {
     "id": "084-palmes-chiropractic",
@@ -2022,8 +1940,7 @@ export const localCancellations = [
     "client_reason": "Moving to a local bookkeeper that he can work more closely with.",
     "time_phase": "Onboarding",
     "months_with_lucro": "8",
-    "estimated_days_in_onboarding": "Onboarding",
-    "recovered_revenue": 1000
+    "estimated_days_in_onboarding": "Onboarding"
   },
   {
     "id": "085-intentional-wellness",
@@ -2046,8 +1963,7 @@ export const localCancellations = [
     "client_reason": "Client wants to move back to his father-in-law who is a CPA",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "7",
-    "estimated_days_in_onboarding": "86",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "86"
   },
   {
     "id": "086-ali-mostafavi-chiropractic-office",
@@ -2070,8 +1986,7 @@ export const localCancellations = [
     "client_reason": "I am writing to you to let you know that after reassessing my business expenses I came to the conclusion that I need to pause Lucro's services at this time. I am going through a major bottleneck this month and I need to hit the breaks with expenses. I hope you and your team understand.",
     "time_phase": "Post-Onboarding (1 - 3 Months)",
     "months_with_lucro": "3",
-    "estimated_days_in_onboarding": "96",
-    "recovered_revenue": 15750
+    "estimated_days_in_onboarding": "96"
   },
   {
     "id": "087-relentless-chiropractic",
@@ -2094,8 +2009,7 @@ export const localCancellations = [
     "client_reason": "The client did not pitch for the onboarding call twice. The client then let us know before the onboarding call that they don't want to use our service. Signed up via financial strategy Call",
     "time_phase": "Onboarding",
     "months_with_lucro": "1",
-    "estimated_days_in_onboarding": "Onboarding",
-    "recovered_revenue": 33750
+    "estimated_days_in_onboarding": "Onboarding"
   },
   {
     "id": "088-total-health-chiropractic-dr-timothy-annis",
@@ -2118,8 +2032,7 @@ export const localCancellations = [
     "client_reason": "I like the information however I do not want to spend what it costs on an ongoing basis to have the information organized for me.",
     "time_phase": "Onboarding",
     "months_with_lucro": "1",
-    "estimated_days_in_onboarding": "29",
-    "recovered_revenue": 3500
+    "estimated_days_in_onboarding": "29"
   },
   {
     "id": "089-transcendhealthmd",
@@ -2142,8 +2055,7 @@ export const localCancellations = [
     "client_reason": "I would like to cancel the subcription since I don't have that many patients in the new clinic yet. When I am ready to get the help I will reach out again.",
     "time_phase": "Onboarding",
     "months_with_lucro": "1",
-    "estimated_days_in_onboarding": "Onboarding",
-    "recovered_revenue": 1000
+    "estimated_days_in_onboarding": "Onboarding"
   },
   {
     "id": "090-hea-longevity",
@@ -2166,8 +2078,7 @@ export const localCancellations = [
     "client_reason": "Client signed up through the website under the impression that we could help grow her clinic. She is a startup, does not have a physical clinic yet, and currently has about 5 existing online clients. She shared that she would like to cancel the service and request a full cancellation and refund, with the intention of reconnecting with us in about a year once her clinic has grown. At this time, she does not have incoming or ongoing.",
     "time_phase": "Onboarding",
     "months_with_lucro": "1",
-    "estimated_days_in_onboarding": "Onboarding",
-    "recovered_revenue": 7500
+    "estimated_days_in_onboarding": "Onboarding"
   },
   {
     "id": "091-campbell-medical-group",
@@ -2190,8 +2101,7 @@ export const localCancellations = [
     "client_reason": "signed up at the BPA event without knowing that I need Quickbook account. The integration of quickbook. Just to get started with your service is not something I want to do right now.",
     "time_phase": "Onboarding",
     "months_with_lucro": "1",
-    "estimated_days_in_onboarding": "Onboarding",
-    "recovered_revenue": 7500
+    "estimated_days_in_onboarding": "Onboarding"
   },
   {
     "id": "092-broadway-orthopedics",
@@ -2214,8 +2124,7 @@ export const localCancellations = [
     "client_reason": "Unclear",
     "time_phase": "Onboarding",
     "months_with_lucro": "0",
-    "estimated_days_in_onboarding": "Onboarding",
-    "recovered_revenue": 2500
+    "estimated_days_in_onboarding": "Onboarding"
   },
   {
     "id": "093-salance-clinic",
@@ -2238,8 +2147,7 @@ export const localCancellations = [
     "client_reason": "The client has to clean up their 2021 - 2024 before we can kick off",
     "time_phase": "Onboarding",
     "months_with_lucro": "0",
-    "estimated_days_in_onboarding": "Onboarding",
-    "recovered_revenue": 11250
+    "estimated_days_in_onboarding": "Onboarding"
   },
   {
     "id": "094-brannigan-chiropractic-center",
@@ -2262,8 +2170,7 @@ export const localCancellations = [
     "client_reason": "We are going to cancel the membership at this time. We are having to pay our book keeper to organize the files better for tax purposes. Thank you for your help trying to get this to work.",
     "time_phase": "Onboarding",
     "months_with_lucro": "0",
-    "estimated_days_in_onboarding": "Onboarding",
-    "recovered_revenue": 22500
+    "estimated_days_in_onboarding": "Onboarding"
   },
   {
     "id": "095-city-of-palms-chiropractic",
@@ -2286,8 +2193,7 @@ export const localCancellations = [
     "client_reason": "Id like to cancel all services relating to lucre effective 1/29/2026 for David Austin Cale Elkin LLC DBA City of Palms Chiropractic.",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "17",
-    "estimated_days_in_onboarding": "61",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "61"
   },
   {
     "id": "096-movewell-spine-sport",
@@ -2310,8 +2216,7 @@ export const localCancellations = [
     "client_reason": "My auto payment is scheduled for tomorrow. There is no money in the account, business has been terrible. I'm working hard to get patients in again but for now, can we cancel or pause services?",
     "time_phase": "Unknown",
     "months_with_lucro": "21",
-    "estimated_days_in_onboarding": "91",
-    "recovered_revenue": 15750
+    "estimated_days_in_onboarding": "91"
   },
   {
     "id": "097-cinque-chiropractic",
@@ -2334,8 +2239,7 @@ export const localCancellations = [
     "client_reason": "My new CPA has her own book keeping services to keep everything in house.",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "10",
-    "estimated_days_in_onboarding": "134",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "134"
   },
   {
     "id": "098-nexmed",
@@ -2358,8 +2262,7 @@ export const localCancellations = [
     "client_reason": "I will no longer need bookkeeping services from Lucro. I am changing accountants and they will do the bookkeeping in house. Thank you so much for all you have done.",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "22",
-    "estimated_days_in_onboarding": "32",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "32"
   },
   {
     "id": "099-hawk-ridge-family-chiropractic",
@@ -2382,8 +2285,7 @@ export const localCancellations = [
     "client_reason": "It’s just simply an easier process using our regular CPA who does our taxes.",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "21",
-    "estimated_days_in_onboarding": "99",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "99"
   },
   {
     "id": "100-pure-family-chiropractic",
@@ -2406,8 +2308,7 @@ export const localCancellations = [
     "client_reason": "I wanted to let you know that I need to discontinue my bookkeeping services with LUCRO. I would like the service to end effective next Monday. Please make sure everything is brought fully up to date through the end of January. If you need anything from me to wrap up the month, just let me know and I will send it over.",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "13",
-    "estimated_days_in_onboarding": "62",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "62"
   },
   {
     "id": "101-drbe-doral",
@@ -2430,8 +2331,7 @@ export const localCancellations = [
     "client_reason": "we are closing the Doral office, effective immediately. I need to cancel Lucro for that clinic",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "10",
-    "estimated_days_in_onboarding": "105",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "105"
   },
   {
     "id": "102-barnard-chiropractic-health-sports-wellness",
@@ -2454,8 +2354,7 @@ export const localCancellations = [
     "client_reason": "I am so sorry to tell you but I will be selling my practice by the end of the month or closing it down for good. So I need to cancel my subscription and make sure im not charged for next month.",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "17",
-    "estimated_days_in_onboarding": "44",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "44"
   },
   {
     "id": "103-optimum-wellness-enterprises",
@@ -2478,8 +2377,7 @@ export const localCancellations = [
     "client_reason": "Please cancel all subscriptions immediately. Thank you for your service and your attention to this matter.",
     "time_phase": "Post-Onboarding (1 - 3 Months)",
     "months_with_lucro": "5",
-    "estimated_days_in_onboarding": "50",
-    "recovered_revenue": 22500
+    "estimated_days_in_onboarding": "50"
   },
   {
     "id": "104-quill-family-chiropractic",
@@ -2502,8 +2400,7 @@ export const localCancellations = [
     "client_reason": "After our 2025 books are completed, we would like to cancel our services with Lucro. We’re going to move bookkeeping to our accountant for ease.",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "14",
-    "estimated_days_in_onboarding": "86",
-    "recovered_revenue": 6000
+    "estimated_days_in_onboarding": "86"
   },
   {
     "id": "105-healthsource-of-huntsville-the-rocket-city",
@@ -2526,8 +2423,7 @@ export const localCancellations = [
     "client_reason": "I am writing to formally request cancellation of our subscription to Lucro services. I understand that billing occurs on or around the 21st of each month. My new bookkeeper will be taking over as of March 1st; however, I will still need you to complete the reconciliation for February.",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "15",
-    "estimated_days_in_onboarding": "109",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "109"
   },
   {
     "id": "106-beverly-family-chiropractic",
@@ -2550,8 +2446,7 @@ export const localCancellations = [
     "client_reason": "No longer need bookkeeping/financial services. I just wasn't using the data to put anything into action. And the business results required significant cost-cutting.",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "14",
-    "estimated_days_in_onboarding": "153",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "153"
   },
   {
     "id": "107-vital-life-chiropractic",
@@ -2574,8 +2469,7 @@ export const localCancellations = [
     "client_reason": "We are in the middle of a practice move and restructuring. We would like to pause our Lucro service and will resume when we are prepared properly to utilize your services.",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "16",
-    "estimated_days_in_onboarding": "71",
-    "recovered_revenue": 33750
+    "estimated_days_in_onboarding": "71"
   },
   {
     "id": "108-circle-of-life-chiropractic",
@@ -2598,8 +2492,7 @@ export const localCancellations = [
     "client_reason": "Client is under financial stress, cannot afford Lucro services at this time",
     "time_phase": "Onboarding",
     "months_with_lucro": "1",
-    "estimated_days_in_onboarding": "Onboarding",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "Onboarding"
   },
   {
     "id": "109-delaware-integrative-healthcare-milford",
@@ -2622,8 +2515,7 @@ export const localCancellations = [
     "client_reason": "-",
     "time_phase": "Onboarding",
     "months_with_lucro": "1",
-    "estimated_days_in_onboarding": "Onboarding",
-    "recovered_revenue": 3500
+    "estimated_days_in_onboarding": "Onboarding"
   },
   {
     "id": "110-zelko-aesthetics",
@@ -2646,8 +2538,7 @@ export const localCancellations = [
     "client_reason": "I do not wish to utilize your services, please refund both the start up fee as well as the $450 you recently charged me my acct Shawn Allen does not require your services, he reached out to your organization last month and did not hear back from you Please terminate our relationship and refund as requested",
     "time_phase": "Onboarding",
     "months_with_lucro": "2",
-    "estimated_days_in_onboarding": "Onboarding",
-    "recovered_revenue": 1000
+    "estimated_days_in_onboarding": "Onboarding"
   },
   {
     "id": "111-lockport-chiropractic-center",
@@ -2670,8 +2561,7 @@ export const localCancellations = [
     "client_reason": "Hello, I know I was in communication prior to our renewal and I clearly stated that Dr. Radcliffe is undecided if he will continue services or not. I just came back from vacation and I saw a charge on the credit card. We never signed the contract nor stated that we will continue services and it is OK to run our credit card. Fir the time being, we would like to suspend services and just finish up last year. we had one too many issues when there was change in bookkeeper and that was just too frustrating. I had to redo same things that I already did when we started at services, summoned for information leaked out to the people that it shouldn’t have, and even yesterday going through deposits errors were found, which were not there before the bookkeeper changed. Anyway, we were not informed of a change of bookkeeper, and the information was not transferred smoothly. So once again. We were just like to finish our last year with you guys and suspense services for the future and have a refund which we never authorized to go through anyway. Thank you for understanding",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "16",
-    "estimated_days_in_onboarding": "",
-    "recovered_revenue": 45000
+    "estimated_days_in_onboarding": ""
   },
   {
     "id": "112-precise-chiropractic-center",
@@ -2694,8 +2584,7 @@ export const localCancellations = [
     "client_reason": "As we reviewed our year-end and tax reporting workflows, we decided to consolidate bookkeeping and tax prep under a single provider to reduce overlap.",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "9",
-    "estimated_days_in_onboarding": "46",
-    "recovered_revenue": 6000
+    "estimated_days_in_onboarding": "46"
   },
   {
     "id": "113-coremedx",
@@ -2718,8 +2607,7 @@ export const localCancellations = [
     "client_reason": "No longer need bookkeeping/financial services",
     "time_phase": "Post-Onboarding (1 - 3 Months)",
     "months_with_lucro": "5",
-    "estimated_days_in_onboarding": "72",
-    "recovered_revenue": 6000
+    "estimated_days_in_onboarding": "72"
   },
   {
     "id": "114-shifting-tides-chiropractic",
@@ -2742,8 +2630,7 @@ export const localCancellations = [
     "client_reason": "The dashboard is not giving the value and insights originally expected from Lucro",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "7",
-    "estimated_days_in_onboarding": "87",
-    "recovered_revenue": 10500
+    "estimated_days_in_onboarding": "87"
   },
   {
     "id": "115-empowered-life",
@@ -2766,8 +2653,7 @@ export const localCancellations = [
     "client_reason": "I understand my numbers as I do outside tracking for that since Lucro's dashboard wasn't tracking everything I tracking and need for a part-time practice model.",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "17",
-    "estimated_days_in_onboarding": "79",
-    "recovered_revenue": 10500
+    "estimated_days_in_onboarding": "79"
   },
   {
     "id": "116-integrated-physical-med",
@@ -2790,8 +2676,7 @@ export const localCancellations = [
     "client_reason": "Issues with the communication from the Lucro team.",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "18",
-    "estimated_days_in_onboarding": "72",
-    "recovered_revenue": 22500
+    "estimated_days_in_onboarding": "72"
   },
   {
     "id": "117-newgen-chiropractic",
@@ -2814,8 +2699,7 @@ export const localCancellations = [
     "client_reason": "Due to financial circumstances and upcoming life changes, I unfortunately need to cancel my services.",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "5",
-    "estimated_days_in_onboarding": "36",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "36"
   },
   {
     "id": "118-northeast-chiropractic-center",
@@ -2838,8 +2722,7 @@ export const localCancellations = [
     "client_reason": "No longer need bookkeeping/financial services. Changing my CPA's system to match Lucro's system.",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "22",
-    "estimated_days_in_onboarding": "90",
-    "recovered_revenue": 6000
+    "estimated_days_in_onboarding": "90"
   },
   {
     "id": "119-crain-chiropractic-wellness",
@@ -2862,8 +2745,7 @@ export const localCancellations = [
     "client_reason": "Able to do bookkeeping by myself and I am not receiving value from the Lucro service offerings",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "7",
-    "estimated_days_in_onboarding": "61",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "61"
   },
   {
     "id": "120-abundance-chiropractic",
@@ -2886,8 +2768,7 @@ export const localCancellations = [
     "client_reason": "I just have 3 office and the first onboarding was easy but as things stacked up - it got more difficult. I needed to get a bunch of documents to finish onboarding and I was overwhelmed with the amount of searching for those documents.",
     "time_phase": "Onboarding",
     "months_with_lucro": "6",
-    "estimated_days_in_onboarding": "Onboarding",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "Onboarding"
   },
   {
     "id": "121-muv-chiropractic-boulder",
@@ -2910,8 +2791,7 @@ export const localCancellations = [
     "client_reason": "We have recently onboarded a new tax team and will be having them handle our bookkeeping",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "14",
-    "estimated_days_in_onboarding": "83",
-    "recovered_revenue": 6000
+    "estimated_days_in_onboarding": "83"
   },
   {
     "id": "122-tm-chiropractic",
@@ -2934,8 +2814,7 @@ export const localCancellations = [
     "client_reason": "Who do I contact to cancel our services? It has nothing to do with your services, but our office is really going through some tough times currently and in all honesty we can not afford to do this any longer.",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "21",
-    "estimated_days_in_onboarding": "31",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "31"
   },
   {
     "id": "123-rubino-family-chiropractic",
@@ -2958,8 +2837,7 @@ export const localCancellations = [
     "client_reason": "The deciding factor was based off the continuity with my tax accountant. I am grateful for your services. Also, I don't think I utilized all of what Lucro offered, perhaps because of my lack of bandwidth which is my fault.",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "11",
-    "estimated_days_in_onboarding": "77",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "77"
   },
   {
     "id": "124-champion-family-chiropractic",
@@ -2982,8 +2860,7 @@ export const localCancellations = [
     "client_reason": "Pricing concerns",
     "time_phase": "Post-Onboarding (1 - 3 Months)",
     "months_with_lucro": "4",
-    "estimated_days_in_onboarding": "66",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "66"
   },
   {
     "id": "125-synsvoll-chiropractic",
@@ -3006,8 +2883,7 @@ export const localCancellations = [
     "client_reason": "Lets wrap up the service at the end of March, I have a local accounting and management company that is helping me going forward. No more reports are necessary after March of 2026. Please cancel my services. I may be back. I have been happy with your service But at this time it is no longer necessary.",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "19",
-    "estimated_days_in_onboarding": "101",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "101"
   },
   {
     "id": "126-the-livingston-clinic",
@@ -3030,8 +2906,7 @@ export const localCancellations = [
     "client_reason": "-",
     "time_phase": "Unknown",
     "months_with_lucro": "",
-    "estimated_days_in_onboarding": "",
-    "recovered_revenue": 11250
+    "estimated_days_in_onboarding": ""
   },
   {
     "id": "127-unlimited-health",
@@ -3054,8 +2929,7 @@ export const localCancellations = [
     "client_reason": "We have decided to bring on an internal accounting department and we are no longer in need of Lucro's services.",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "10",
-    "estimated_days_in_onboarding": "143",
-    "recovered_revenue": 11000
+    "estimated_days_in_onboarding": "143"
   },
   {
     "id": "128-primero-spine-and-joint",
@@ -3078,8 +2952,7 @@ export const localCancellations = [
     "client_reason": "I sent an email last week saying that I needed to cancel my subscription with Lucro.",
     "time_phase": "Onboarding",
     "months_with_lucro": "4",
-    "estimated_days_in_onboarding": "134",
-    "recovered_revenue": 3500
+    "estimated_days_in_onboarding": "134"
   },
   {
     "id": "129-sol-chiropractic",
@@ -3102,8 +2975,7 @@ export const localCancellations = [
     "client_reason": "Thank you for the support, but it's too expensive and already have a bookkeeper that works on alll my businesses.",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "11",
-    "estimated_days_in_onboarding": "49",
-    "recovered_revenue": 6000
+    "estimated_days_in_onboarding": "49"
   },
   {
     "id": "130-delaware-integrative-healthcare-smyrna",
@@ -3126,8 +2998,7 @@ export const localCancellations = [
     "client_reason": "No longer need bookkeeping/financial services",
     "time_phase": "Onboarding",
     "months_with_lucro": "6",
-    "estimated_days_in_onboarding": "Onboarding",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "Onboarding"
   },
   {
     "id": "131-summit-health-solutions",
@@ -3150,8 +3021,7 @@ export const localCancellations = [
     "client_reason": "Inconsistency of communicated tasks not getting passed with account reps are switched. Multiple errors in account allocation for expenses. Expenses logged wrong or ended up on a clarification list. Etc.",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "13",
-    "estimated_days_in_onboarding": "88",
-    "recovered_revenue": 22500
+    "estimated_days_in_onboarding": "88"
   },
   {
     "id": "132-lifeway-chiropractic-and-wellness",
@@ -3174,8 +3044,7 @@ export const localCancellations = [
     "client_reason": "Limited Value & Unclear Benefits",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "19",
-    "estimated_days_in_onboarding": "130",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "130"
   },
   {
     "id": "133-trimont-chiropractic-acupuncture-and-nutrition",
@@ -3198,8 +3067,7 @@ export const localCancellations = [
     "client_reason": "Thank you for the work you have done for me. At this time I am going to utilize my accountant to do my bookkeeping also.",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "19",
-    "estimated_days_in_onboarding": "93",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "93"
   },
   {
     "id": "134-donaldson-zamudio-chiropractic",
@@ -3222,8 +3090,7 @@ export const localCancellations = [
     "client_reason": "needed a new CPA and her monthly program includes bookkeeping and payroll services.",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "13",
-    "estimated_days_in_onboarding": "58",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "58"
   },
   {
     "id": "135-chiropractic-memphis-downtown",
@@ -3246,8 +3113,7 @@ export const localCancellations = [
     "client_reason": "Changing practice owenership. If I was keeping the business, I would stay with you. Thank you for everything.",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "19",
-    "estimated_days_in_onboarding": "225",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "225"
   },
   {
     "id": "136-mch-chiro-and-nutrition",
@@ -3270,8 +3136,7 @@ export const localCancellations = [
     "client_reason": "I wanted to reach out and let you know that we’ll be transitioning away from bookkeeping services with Lucro. We’re grateful for the support and work your team has provided—it’s been appreciated. At this time, we’re making a change in how we’re handling things internally.",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "19",
-    "estimated_days_in_onboarding": "49",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "49"
   },
   {
     "id": "137-hawaii-gonstead-chiropractic",
@@ -3294,8 +3159,7 @@ export const localCancellations = [
     "client_reason": "My accountant found several items that had been miscategorized when preparing my 2025 taxes. I'm going to move forward with a different bookkeeping company going forward.",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "18",
-    "estimated_days_in_onboarding": "138",
-    "recovered_revenue": 10500
+    "estimated_days_in_onboarding": "138"
   },
   {
     "id": "138-inner-life",
@@ -3318,8 +3182,7 @@ export const localCancellations = [
     "client_reason": "I am going to need to discontinue Lucro at the end of this month. The business financials just are not there to support it.",
     "time_phase": "Post-Onboarding (1 - 3 Months)",
     "months_with_lucro": "4",
-    "estimated_days_in_onboarding": "47",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "47"
   },
   {
     "id": "139-integral-chiropractic",
@@ -3342,8 +3205,7 @@ export const localCancellations = [
     "client_reason": "Yeah let’s just end things I may be back, I want to go a different direction.",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "10",
-    "estimated_days_in_onboarding": "54",
-    "recovered_revenue": 15000
+    "estimated_days_in_onboarding": "54"
   },
   {
     "id": "140-health-revolution-chiropractic",
@@ -3366,8 +3228,7 @@ export const localCancellations = [
     "client_reason": "I hope you are doing well. I need to cancel our services. We are not utilizing the services to the fullest extent. Thank you for all of the work. I appreciate you all.",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "8",
-    "estimated_days_in_onboarding": "62",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "62"
   },
   {
     "id": "141-adio-management",
@@ -3390,8 +3251,7 @@ export const localCancellations = [
     "client_reason": "I hope you are doing well. I need to cancel our services. We are not utilizing the services to the fullest extent. Thank you for all of the work. I appreciate you all.",
     "time_phase": "Mature Client (3 - 12 Months)",
     "months_with_lucro": "8",
-    "estimated_days_in_onboarding": "62",
-    "recovered_revenue": 3000
+    "estimated_days_in_onboarding": "62"
   },
   {
     "id": "142-dr-bivins",
@@ -3414,16 +3274,15 @@ export const localCancellations = [
     "client_reason": "I am cancelling my account at this time because my business has slowed down and I am pivoting my focus an not actively building it back up at this time..",
     "time_phase": "Post-Onboarding (1 - 3 Months)",
     "months_with_lucro": "6",
-    "estimated_days_in_onboarding": "105",
-    "recovered_revenue": 1400
+    "estimated_days_in_onboarding": "105"
   },
   {
     "id": "143-dih-camp",
     "client_name": "DIH Camp",
-    "cancellation_reason": "Unclear",
-    "primary_churn_driver": "Unclear",
-    "revenue": 25000,
-    "revenue_tier": "Unknown",
+    "cancellation_reason": "New CPA/BK",
+    "primary_churn_driver": "New or Current Bookkeeper / CPA taking over",
+    "revenue": 150000,
+    "revenue_tier": "$101 - $150k",
     "status": "Cancelled",
     "account_manager": "Marissa Dennis",
     "created_at": "2026-06-04",
@@ -3431,23 +3290,22 @@ export const localCancellations = [
     "final_month": "Jun 2026",
     "paused_follow_up_date": "",
     "phase": "Ongoing",
-    "preventable": "Unclear",
-    "engagement_level": "Unknown",
-    "tone": "Unknown",
+    "preventable": "No",
+    "engagement_level": "Low / Some",
+    "tone": "Positive/ appreciative",
     "lead_source": "Josiah",
-    "client_reason": "-",
+    "client_reason": "No longer need bookkeeping/financial services",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "18",
-    "estimated_days_in_onboarding": "121",
-    "recovered_revenue": 2500
+    "estimated_days_in_onboarding": "121"
   },
   {
     "id": "144-delaware-integrative-healthcare-middletown",
     "client_name": "Delaware Integrative Healthcare - Middletown",
-    "cancellation_reason": "Unclear",
-    "primary_churn_driver": "Unclear",
-    "revenue": 25000,
-    "revenue_tier": "Unknown",
+    "cancellation_reason": "New CPA/BK",
+    "primary_churn_driver": "New or Current Bookkeeper / CPA taking over",
+    "revenue": 150000,
+    "revenue_tier": "$101 - $150k",
     "status": "Cancelled",
     "account_manager": "Marissa Dennis",
     "created_at": "2026-06-04",
@@ -3455,23 +3313,22 @@ export const localCancellations = [
     "final_month": "Jun 2026",
     "paused_follow_up_date": "",
     "phase": "Ongoing",
-    "preventable": "Unclear",
-    "engagement_level": "Unknown",
-    "tone": "Unknown",
+    "preventable": "No",
+    "engagement_level": "Low / Some",
+    "tone": "Positive/ appreciative",
     "lead_source": "Josiah",
-    "client_reason": "-",
+    "client_reason": "No longer need bookkeeping/financial services",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "18",
-    "estimated_days_in_onboarding": "121",
-    "recovered_revenue": 2500
+    "estimated_days_in_onboarding": "121"
   },
   {
     "id": "145-delaware-integrative-healthcare-milford",
     "client_name": "Delaware Integrative Healthcare - Milford",
-    "cancellation_reason": "Unclear",
-    "primary_churn_driver": "Unclear",
-    "revenue": 25000,
-    "revenue_tier": "Unknown",
+    "cancellation_reason": "New CPA/BK",
+    "primary_churn_driver": "New or Current Bookkeeper / CPA taking over",
+    "revenue": 75000,
+    "revenue_tier": "$51k - $100",
     "status": "Cancelled",
     "account_manager": "Marissa Dennis",
     "created_at": "2026-06-04",
@@ -3479,23 +3336,22 @@ export const localCancellations = [
     "final_month": "Jun 2026",
     "paused_follow_up_date": "",
     "phase": "Ongoing",
-    "preventable": "Unclear",
-    "engagement_level": "Unknown",
-    "tone": "Unknown",
+    "preventable": "No",
+    "engagement_level": "Low / Some",
+    "tone": "Positive/ appreciative",
     "lead_source": "Josiah",
-    "client_reason": "-",
+    "client_reason": "No longer need bookkeeping/financial services",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "18",
-    "estimated_days_in_onboarding": "121",
-    "recovered_revenue": 2500
+    "estimated_days_in_onboarding": "121"
   },
   {
     "id": "146-delaware-integrative-healthcare-smyrna",
     "client_name": "Delaware Integrative Healthcare - Smyrna",
-    "cancellation_reason": "Unclear",
-    "primary_churn_driver": "Unclear",
-    "revenue": 25000,
-    "revenue_tier": "Unknown",
+    "cancellation_reason": "New CPA/BK",
+    "primary_churn_driver": "New or Current Bookkeeper / CPA taking over",
+    "revenue": 35000,
+    "revenue_tier": "$0 - $50k",
     "status": "Cancelled",
     "account_manager": "Marissa Dennis",
     "created_at": "2026-06-04",
@@ -3503,23 +3359,22 @@ export const localCancellations = [
     "final_month": "Jun 2026",
     "paused_follow_up_date": "",
     "phase": "Ongoing",
-    "preventable": "Unclear",
-    "engagement_level": "Unknown",
-    "tone": "Unknown",
+    "preventable": "No",
+    "engagement_level": "Low / Some",
+    "tone": "Positive/ appreciative",
     "lead_source": "Josiah",
-    "client_reason": "-",
+    "client_reason": "No longer need bookkeeping/financial services",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "18",
-    "estimated_days_in_onboarding": "121",
-    "recovered_revenue": 2500
+    "estimated_days_in_onboarding": "121"
   },
   {
     "id": "147-dover-chiropractic-rehabilitation",
     "client_name": "Dover Chiropractic & Rehabilitation",
-    "cancellation_reason": "Unclear",
-    "primary_churn_driver": "Unclear",
-    "revenue": 25000,
-    "revenue_tier": "Unknown",
+    "cancellation_reason": "New CPA/BK",
+    "primary_churn_driver": "New or Current Bookkeeper / CPA taking over",
+    "revenue": 75000,
+    "revenue_tier": "$51k - $100",
     "status": "Cancelled",
     "account_manager": "Marissa Dennis",
     "created_at": "2026-06-04",
@@ -3527,14 +3382,82 @@ export const localCancellations = [
     "final_month": "Jun 2026",
     "paused_follow_up_date": "",
     "phase": "Ongoing",
-    "preventable": "Unclear",
-    "engagement_level": "Unknown",
-    "tone": "Unknown",
+    "preventable": "No",
+    "engagement_level": "Low / Some",
+    "tone": "Positive/ appreciative",
     "lead_source": "Josiah",
-    "client_reason": "-",
+    "client_reason": "No longer need bookkeeping/financial services",
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "18",
-    "estimated_days_in_onboarding": "121",
-    "recovered_revenue": 2500
+    "estimated_days_in_onboarding": "121"
+  },
+  {
+    "id": "148-apex-advanced-medicine",
+    "client_name": "Apex Advanced Medicine",
+    "cancellation_reason": "Non-Responsive - Considered Cancelled",
+    "primary_churn_driver": "Non - Responsive - Considered Cancelled",
+    "revenue": 25000,
+    "revenue_tier": "Data not available",
+    "status": "Cancelled",
+    "account_manager": "Marissa Dennis",
+    "created_at": "2026-07-01",
+    "cancellation_request_date": "7/1/2026",
+    "final_month": "Jun 2026",
+    "paused_follow_up_date": "",
+    "phase": "Onboarding",
+    "preventable": "Unclear",
+    "engagement_level": "No Response",
+    "tone": "Unknown",
+    "lead_source": "blueprint",
+    "client_reason": "Client has missed a substantial amount of payments and has been Non-responsive. Considered Cancelled",
+    "time_phase": "Onboarding",
+    "months_with_lucro": "12",
+    "estimated_days_in_onboarding": "Onboarding"
+  },
+  {
+    "id": "149-begin-well-co",
+    "client_name": "Begin Well Co",
+    "cancellation_reason": "Non-Responsive - Considered Cancelled",
+    "primary_churn_driver": "Non - Responsive - Considered Cancelled",
+    "revenue": 35000,
+    "revenue_tier": "$0 - $50k",
+    "status": "Cancelled",
+    "account_manager": "Amadea De Beer",
+    "created_at": "2026-07-01",
+    "cancellation_request_date": "7/1/2026",
+    "final_month": "Jun 2026",
+    "paused_follow_up_date": "",
+    "phase": "Onboarding",
+    "preventable": "Unclear",
+    "engagement_level": "No Response",
+    "tone": "Unknown",
+    "lead_source": "Unknown / Not Recorded",
+    "client_reason": "Client has missed a substantial amount of payments and has been Non-responsive. Considered Cancelled",
+    "time_phase": "Onboarding",
+    "months_with_lucro": "20",
+    "estimated_days_in_onboarding": "Onboarding"
+  },
+  {
+    "id": "150-american-chiropractic-medical-services",
+    "client_name": "American Chiropractic Medical Services",
+    "cancellation_reason": "Non-Responsive - Considered Cancelled",
+    "primary_churn_driver": "Non - Responsive - Considered Cancelled",
+    "revenue": 35000,
+    "revenue_tier": "$0 - $50k",
+    "status": "Cancelled",
+    "account_manager": "Adriaan Niemand",
+    "created_at": "2026-07-01",
+    "cancellation_request_date": "7/1/2026",
+    "final_month": "Jun 2026",
+    "paused_follow_up_date": "",
+    "phase": "Onboarding",
+    "preventable": "Unclear",
+    "engagement_level": "No Response",
+    "tone": "Unknown",
+    "lead_source": "Yep",
+    "client_reason": "Client has missed a substantial amount of payments and has been Non-responsive. Considered Cancelled",
+    "time_phase": "Onboarding",
+    "months_with_lucro": "7",
+    "estimated_days_in_onboarding": "Onboarding"
   }
 ];

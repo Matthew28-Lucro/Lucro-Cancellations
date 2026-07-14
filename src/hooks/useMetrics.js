@@ -16,7 +16,6 @@ import {
   mapApiCancellationsToClientRecords,
   sortCancellationData,
 } from "../utils/metrics.js";
-import { EXCLUDED_PERIOD_IDS } from "../constants/dashboard.js";
 
 function buildDynamicKpis(clients) {
   const topRevenueTier = getTopRevenueTier(clients);
@@ -50,13 +49,7 @@ function buildDynamicKpis(clients) {
 }
 
 export default function useMetrics({ cancellations, filters, sort }) {
-  const allClients = useMemo(
-    () =>
-      mapApiCancellationsToClientRecords(cancellations).filter(
-        (client) => !EXCLUDED_PERIOD_IDS.includes(client.periodId)
-      ),
-    [cancellations]
-  );
+  const allClients = useMemo(() => mapApiCancellationsToClientRecords(cancellations), [cancellations]);
 
   const cancellationReasons = useMemo(() => getUniqueOptions(allClients, "cancellationReason"), [allClients]);
   const accountManagers = useMemo(() => getUniqueOptions(allClients, "accountManager"), [allClients]);

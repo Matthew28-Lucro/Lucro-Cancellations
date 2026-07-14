@@ -25,8 +25,6 @@ export const SORTABLE_COLUMN_MAP = {
 
 export const YEAR_TO_DATE_VALUE = "ytd";
 
-export const EXCLUDED_PERIOD_IDS = ["2026-06"];
-
 export const INITIAL_FILTERS = {
   cancellationReason: "",
   accountManager: "",
