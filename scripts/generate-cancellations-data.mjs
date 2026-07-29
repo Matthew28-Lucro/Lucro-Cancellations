@@ -140,13 +140,10 @@ function inferRevenueTierValue(revenueTier) {
   return 50000;
 }
 
-const REVENUE_TIER_OVERRIDES = new Map([
-  ["billionaire marketing", "$0 - $50k"],
-  ["healthcare holding", "$0 - $50k"],
-]);
+const EXCLUDED_PRACTICES = new Set(["billionaire marketing", "healthcare holding"]);
 
-function resolveRevenueTier(practice, revenueTier) {
-  return REVENUE_TIER_OVERRIDES.get(clean(practice).toLowerCase()) || revenueTier;
+function isExcludedPractice(practice) {
+  return EXCLUDED_PRACTICES.has(clean(practice).toLowerCase());
 }
 
 function slug(value, fallback) {
@@ -161,7 +158,8 @@ const headers = parsed[0].map((header) => clean(header));
 const rows = parsed.slice(1);
 
 const namedRows = rows.filter((row) => get(row, headers, "Practice Name"));
-const generatedCancellations = namedRows.map((row, index) => {
+const includedRows = namedRows.filter((row) => !isExcludedPractice(get(row, headers, "Practice Name")));
+const generatedCancellations = includedRows.map((row, index) => {
   const practice = get(row, headers, "Practice Name", "Unknown Practice");
   const rawRequestDate = clean(get(row, headers, "Cancellation Request Date")) || "Before Tracker";
   const primaryDriver = get(row, headers, "Primary Churn Driver");
@@ -173,7 +171,7 @@ const generatedCancellations = namedRows.map((row, index) => {
     "-";
   const ongoingManager = get(row, headers, "Ongoing Account Manager");
   const onboardingManager = get(row, headers, "Onboarding Manager");
-  const revenueTier = resolveRevenueTier(practice, get(row, headers, "Monthly Revenue Tier", "Unknown"));
+  const revenueTier = get(row, headers, "Monthly Revenue Tier", "Unknown");
 
   return {
     id: `${String(index + 1).padStart(3, "0")}-${slug(practice, `practice-${index + 1}`)}`,
@@ -217,6 +215,7 @@ const sourceSummary = {
   row_count: cancellations.length,
   source_rows: rows.length,
   skipped_empty_rows: rows.length - namedRows.length,
+  skipped_excluded_practices: namedRows.length - includedRows.length,
   excluded_future_records: generatedCancellations.length - cancellations.length,
   dated_records: cancellations.filter((row) => row.created_at).length,
   undated_records: cancellations.filter((row) => !row.created_at).length,

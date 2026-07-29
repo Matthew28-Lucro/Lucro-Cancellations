@@ -4,14 +4,15 @@
 export const cancellationSourceSummary = {
   "source_file": "Lucro - Official Cancellation Tracker - __Churn Documentation__.csv",
   "latest_included_period": "2026-07",
-  "row_count": 163,
+  "row_count": 161,
   "source_rows": 165,
   "skipped_empty_rows": 1,
+  "skipped_excluded_practices": 2,
   "excluded_future_records": 1,
-  "dated_records": 95,
+  "dated_records": 93,
   "undated_records": 68,
   "june_2026_records": 12,
-  "july_2026_records": 13,
+  "july_2026_records": 11,
   "month_counts": {
     "Feb 2024": 1,
     "May 2024": 5,
@@ -41,7 +42,7 @@ export const cancellationSourceSummary = {
     "Apr 2026": 11,
     "May 2026": 5,
     "Jun 2026": 12,
-    "Jul 2026": 13
+    "Jul 2026": 11
   }
 };
 
@@ -3658,53 +3659,7 @@ export const localCancellations = [
     "estimated_days_in_onboarding": "106"
   },
   {
-    "id": "158-billionaire-marketing",
-    "client_name": "Billionaire Marketing",
-    "cancellation_reason": "New CPA/BK",
-    "primary_churn_driver": "New or Current Bookkeeper / CPA taking over",
-    "revenue": 35000,
-    "revenue_tier": "$0 - $50k",
-    "status": "Cancelled",
-    "account_manager": "Debra Martheze",
-    "created_at": "2026-06-15",
-    "cancellation_request_date": "6/15/2026",
-    "final_month": "Jul 2026",
-    "paused_follow_up_date": "",
-    "phase": "Ongoing",
-    "preventable": "No",
-    "engagement_level": "Low / Some",
-    "tone": "Neutral",
-    "lead_source": "Webinar",
-    "client_reason": "I will be stopping Lucro at the end of this billing cycle and allowing my wealth management team to take my bookkeeping over.",
-    "time_phase": "Mature Client (3 - 12 Months)",
-    "months_with_lucro": "12",
-    "estimated_days_in_onboarding": "106"
-  },
-  {
-    "id": "159-healthcare-holding",
-    "client_name": "Healthcare Holding",
-    "cancellation_reason": "New CPA/BK",
-    "primary_churn_driver": "New or Current Bookkeeper / CPA taking over",
-    "revenue": 35000,
-    "revenue_tier": "$0 - $50k",
-    "status": "Cancelled",
-    "account_manager": "Debra Martheze",
-    "created_at": "2026-06-15",
-    "cancellation_request_date": "6/15/2026",
-    "final_month": "Jul 2026",
-    "paused_follow_up_date": "",
-    "phase": "Ongoing",
-    "preventable": "No",
-    "engagement_level": "Low / Some",
-    "tone": "Neutral",
-    "lead_source": "Webinar",
-    "client_reason": "I will be stopping Lucro at the end of this billing cycle and allowing my wealth management team to take my bookkeeping over.",
-    "time_phase": "Mature Client (3 - 12 Months)",
-    "months_with_lucro": "12",
-    "estimated_days_in_onboarding": "106"
-  },
-  {
-    "id": "160-makda-chiropractic-health-center",
+    "id": "158-makda-chiropractic-health-center",
     "client_name": "Makda Chiropractic Health Center",
     "cancellation_reason": "Financial Burden",
     "primary_churn_driver": "Pricing Issue",
@@ -3727,7 +3682,7 @@ export const localCancellations = [
     "estimated_days_in_onboarding": "77"
   },
   {
-    "id": "161-reform-chiropractic",
+    "id": "159-reform-chiropractic",
     "client_name": "Reform Chiropractic",
     "cancellation_reason": "New CPA/BK",
     "primary_churn_driver": "New or Current Bookkeeper / CPA taking over",
@@ -3750,7 +3705,7 @@ export const localCancellations = [
     "estimated_days_in_onboarding": "46"
   },
   {
-    "id": "162-whole-body-health",
+    "id": "160-whole-body-health",
     "client_name": "Whole Body Health",
     "cancellation_reason": "Dashboard Lacks Value",
     "primary_churn_driver": "Perceived Lack of Value in Service",
@@ -3773,7 +3728,7 @@ export const localCancellations = [
     "estimated_days_in_onboarding": "75"
   },
   {
-    "id": "163-carolina-west-clinic-beaufort",
+    "id": "161-carolina-west-clinic-beaufort",
     "client_name": "Carolina West Clinic Beaufort",
     "cancellation_reason": "Ownership Change (Sale/Merger)",
     "primary_churn_driver": "Ownership Change (Sale/ Merger)",
