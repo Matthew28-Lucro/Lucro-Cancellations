@@ -22,6 +22,13 @@ UPSTASH_REDIS_REST_URL=...
 UPSTASH_REDIS_REST_TOKEN=...
 ```
 
+If your Vercel storage integration adds the prefixed KV names, the code also supports:
+
+```text
+UPSTASH_REDIS_KV_REST_API_URL=...
+UPSTASH_REDIS_KV_REST_API_TOKEN=...
+```
+
 If your Vercel storage integration provides the older Vercel KV names instead, the code also supports:
 
 ```text
@@ -39,6 +46,11 @@ Once it is attached to the project, Vercel should inject Redis REST environment 
 
 - `UPSTASH_REDIS_REST_URL`
 - `UPSTASH_REDIS_REST_TOKEN`
+
+or:
+
+- `UPSTASH_REDIS_KV_REST_API_URL`
+- `UPSTASH_REDIS_KV_REST_API_TOKEN`
 
 or:
 
