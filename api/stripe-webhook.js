@@ -1,4 +1,6 @@
 import crypto from "node:crypto";
+import { writeBillingSnapshot } from "./lib/billing-cache.js";
+import { getLiveBillingSummary, hasStripeSecretKey } from "./lib/stripe-billing.js";
 
 const RELEVANT_EVENTS = new Set([
   "customer.created",
@@ -80,17 +82,42 @@ export default async function handler(request, response) {
     return;
   }
 
-  const event = JSON.parse(payload);
+  let event;
+
+  try {
+    event = JSON.parse(payload);
+  } catch {
+    sendJson(response, 400, { error: "Invalid Stripe webhook payload." });
+    return;
+  }
 
   if (!RELEVANT_EVENTS.has(event.type)) {
     sendJson(response, 200, { received: true, ignored: true, type: event.type });
     return;
   }
 
-  // Future database step: update the persisted billing snapshot here.
-  sendJson(response, 200, {
-    received: true,
-    type: event.type,
-    objectId: event.data?.object?.id || null,
-  });
+  if (!hasStripeSecretKey()) {
+    sendJson(response, 500, { error: "STRIPE_SECRET_KEY is not configured." });
+    return;
+  }
+
+  try {
+    const summary = await getLiveBillingSummary();
+    const cache = await writeBillingSnapshot(summary, `stripe-webhook:${event.type}`);
+
+    sendJson(response, 200, {
+      received: true,
+      refreshed: true,
+      type: event.type,
+      objectId: event.data?.object?.id || null,
+      cache,
+    });
+  } catch (error) {
+    sendJson(response, 500, {
+      received: false,
+      type: event.type,
+      objectId: event.data?.object?.id || null,
+      error: error instanceof Error ? error.message : "Unable to refresh billing snapshot.",
+    });
+  }
 }

@@ -119,13 +119,14 @@ function BillingFilters({
   generatedAt,
   mode,
   planFilter,
+  source,
   status,
   statusFilter,
   resultCount,
   onPlanChange,
   onStatusChange,
 }) {
-  const badgeText = mode === "live" ? "Live Stripe" : "Mock Data";
+  const badgeText = mode === "live" ? (source === "stripe-cache" ? "Live Snapshot" : "Live Stripe") : "Mock Data";
   const updatedText = generatedAt
     ? `Last updated ${new Intl.DateTimeFormat("en-US", {
         hour: "2-digit",
@@ -379,9 +380,11 @@ export default function BillingDashboard({ navigation }) {
     error: "",
     generatedAt: null,
     mode: "mock",
+    source: "mock",
     status: "loading",
     trend: [],
     warning: "",
+    warnings: [],
   });
 
   useEffect(() => {
@@ -398,9 +401,11 @@ export default function BillingDashboard({ navigation }) {
         error: summary.error || "",
         generatedAt: summary.generatedAt,
         mode: summary.mode,
+        source: summary.source,
         status: "success",
         trend: summary.trend,
         warning: summary.warning || "",
+        warnings: summary.warnings || [],
       });
     }
 
@@ -474,13 +479,19 @@ export default function BillingDashboard({ navigation }) {
         brand: "Lucro - Billing Operations",
         titlePrefix: "Billing",
         titleAccent: "Dashboard",
-        period: billingState.mode === "live" ? "Live Stripe" : "Stripe Mirror",
+        period:
+          billingState.mode === "live"
+            ? billingState.source === "stripe-cache"
+              ? "Live Snapshot"
+              : "Live Stripe"
+            : "Stripe Mirror",
       }}
     >
       <BillingFilters
         generatedAt={billingState.generatedAt}
         mode={billingState.mode}
         planFilter={planFilter}
+        source={billingState.source}
         status={billingState.status}
         statusFilter={statusFilter}
         resultCount={filteredClients.length}
