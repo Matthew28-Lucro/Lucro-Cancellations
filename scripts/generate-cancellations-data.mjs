@@ -2,10 +2,11 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 const sourcePath = process.argv[2];
+const latestIncludedPeriodId = process.argv[3] || "";
 const outputPath = resolve("src/data/cancellations.js");
 
 if (!sourcePath) {
-  throw new Error("Provide a source CSV path.");
+  throw new Error("Provide a source CSV path. You may also pass an optional latest included period, like 2026-07.");
 }
 
 const csv = readFileSync(sourcePath, "utf8").replace(/^\uFEFF/, "");
@@ -90,6 +91,43 @@ function parseRequestDate(value) {
   return `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
 }
 
+const MONTH_INDEX_BY_NAME = {
+  jan: 0,
+  january: 0,
+  feb: 1,
+  february: 1,
+  mar: 2,
+  march: 2,
+  apr: 3,
+  april: 3,
+  may: 4,
+  jun: 5,
+  june: 5,
+  jul: 6,
+  july: 6,
+  aug: 7,
+  august: 7,
+  sep: 8,
+  sept: 8,
+  september: 8,
+  oct: 9,
+  october: 9,
+  nov: 10,
+  november: 10,
+  dec: 11,
+  december: 11,
+};
+
+function parseFinalMonthId(value) {
+  const match = clean(value).match(/^([A-Za-z]+)\s+(\d{4})$/);
+  if (!match) return "";
+
+  const monthIndex = MONTH_INDEX_BY_NAME[match[1].toLowerCase()];
+  if (monthIndex === undefined) return "";
+
+  return `${match[2]}-${String(monthIndex + 1).padStart(2, "0")}`;
+}
+
 function inferRevenueTierValue(revenueTier) {
   const tier = clean(revenueTier).toLowerCase().replace(/\s+/g, "");
   if (!tier) return 25000;
@@ -113,7 +151,8 @@ const parsed = parseCsv(csv);
 const headers = parsed[0].map((header) => clean(header));
 const rows = parsed.slice(1);
 
-const cancellations = rows.map((row, index) => {
+const namedRows = rows.filter((row) => get(row, headers, "Practice Name"));
+const generatedCancellations = namedRows.map((row, index) => {
   const practice = get(row, headers, "Practice Name", "Unknown Practice");
   const rawRequestDate = clean(get(row, headers, "Cancellation Request Date")) || "Before Tracker";
   const primaryDriver = get(row, headers, "Primary Churn Driver");
@@ -152,12 +191,29 @@ const cancellations = rows.map((row, index) => {
   };
 });
 
+const cancellations = generatedCancellations.filter((row) => {
+  const periodId = parseFinalMonthId(row.final_month);
+  return !latestIncludedPeriodId || !periodId || periodId <= latestIncludedPeriodId;
+});
+
+const monthCounts = cancellations.reduce((counts, row) => {
+  const label = row.final_month || "No Final Month";
+  counts[label] = (counts[label] || 0) + 1;
+  return counts;
+}, {});
+
 const sourceSummary = {
   source_file: sourcePath.split(/[\\/]/).pop(),
+  latest_included_period: latestIncludedPeriodId || "All",
   row_count: cancellations.length,
+  source_rows: rows.length,
+  skipped_empty_rows: rows.length - namedRows.length,
+  excluded_future_records: generatedCancellations.length - cancellations.length,
   dated_records: cancellations.filter((row) => row.created_at).length,
   undated_records: cancellations.filter((row) => !row.created_at).length,
   june_2026_records: cancellations.filter((row) => row.final_month === "Jun 2026").length,
+  july_2026_records: cancellations.filter((row) => row.final_month === "Jul 2026").length,
+  month_counts: monthCounts,
 };
 
 const contents = `// Generated from ${sourceSummary.source_file}.
