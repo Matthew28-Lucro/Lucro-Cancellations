@@ -140,6 +140,15 @@ function inferRevenueTierValue(revenueTier) {
   return 50000;
 }
 
+const REVENUE_TIER_OVERRIDES = new Map([
+  ["billionaire marketing", "$0 - $50k"],
+  ["healthcare holding", "$0 - $50k"],
+]);
+
+function resolveRevenueTier(practice, revenueTier) {
+  return REVENUE_TIER_OVERRIDES.get(clean(practice).toLowerCase()) || revenueTier;
+}
+
 function slug(value, fallback) {
   return clean(value, fallback)
     .toLowerCase()
@@ -164,7 +173,7 @@ const generatedCancellations = namedRows.map((row, index) => {
     "-";
   const ongoingManager = get(row, headers, "Ongoing Account Manager");
   const onboardingManager = get(row, headers, "Onboarding Manager");
-  const revenueTier = get(row, headers, "Monthly Revenue Tier", "Unknown");
+  const revenueTier = resolveRevenueTier(practice, get(row, headers, "Monthly Revenue Tier", "Unknown"));
 
   return {
     id: `${String(index + 1).padStart(3, "0")}-${slug(practice, `practice-${index + 1}`)}`,
