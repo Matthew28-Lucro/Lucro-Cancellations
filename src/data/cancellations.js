@@ -1,18 +1,18 @@
-// Generated from Lucro - Official Cancellation Tracker - __Churn Documentation__.csv.
+// Generated from Lucro - Official Cancellation Tracker - __Churn Documentation__ (1).csv.
 // Deliberately excludes client emails and personal contact names for the public dashboard bundle.
 
 export const cancellationSourceSummary = {
-  "source_file": "Lucro - Official Cancellation Tracker - __Churn Documentation__.csv",
+  "source_file": "Lucro - Official Cancellation Tracker - __Churn Documentation__ (1).csv",
   "latest_included_period": "2026-07",
-  "row_count": 161,
-  "source_rows": 165,
+  "row_count": 162,
+  "source_rows": 164,
   "skipped_empty_rows": 1,
-  "skipped_excluded_practices": 2,
+  "skipped_excluded_practices": 0,
   "excluded_future_records": 1,
-  "dated_records": 93,
+  "dated_records": 94,
   "undated_records": 68,
   "june_2026_records": 12,
-  "july_2026_records": 11,
+  "july_2026_records": 12,
   "month_counts": {
     "Feb 2024": 1,
     "May 2024": 5,
@@ -42,7 +42,7 @@ export const cancellationSourceSummary = {
     "Apr 2026": 11,
     "May 2026": 5,
     "Jun 2026": 12,
-    "Jul 2026": 11
+    "Jul 2026": 12
   }
 };
 
@@ -3749,5 +3749,28 @@ export const localCancellations = [
     "time_phase": "Long-Term Client (12 Months +)",
     "months_with_lucro": "31",
     "estimated_days_in_onboarding": "125"
+  },
+  {
+    "id": "162-river-city-chiropractic-llc",
+    "client_name": "River City Chiropractic LLC",
+    "cancellation_reason": "Financial Burden",
+    "primary_churn_driver": "Cash Flow Pressure / Financial Problems",
+    "revenue": 25000,
+    "revenue_tier": "Data not available",
+    "status": "Cancelled",
+    "account_manager": "Unassigned",
+    "created_at": "2026-07-30",
+    "cancellation_request_date": "7/30/2026",
+    "final_month": "Jul 2026",
+    "paused_follow_up_date": "",
+    "phase": "Onboarding",
+    "preventable": "No",
+    "engagement_level": "In Onboarding",
+    "tone": "Positive/ appreciative",
+    "lead_source": "Blueprint & Lucro industry report 2026",
+    "client_reason": "Dr. Brian initially believed they were using QuickBooks Online. However, after speaking with his bookkeeper, he realized that they are actually using QuickBooks Desktop and had just renewed their annual subscription about a month ago.He is concerned that transitioning to QuickBooks Online with payroll may increase his monthly overhead. Although I explained the estimated costs specific to his clinic and discussed the available options, he has decided not to move forward with onboarding at this time.",
+    "time_phase": "Onboarding",
+    "months_with_lucro": "0",
+    "estimated_days_in_onboarding": "Onboarding"
   }
 ];
