@@ -221,6 +221,7 @@ const sourceSummary = {
   undated_records: cancellations.filter((row) => !row.created_at).length,
   june_2026_records: cancellations.filter((row) => row.final_month === "Jun 2026").length,
   july_2026_records: cancellations.filter((row) => row.final_month === "Jul 2026").length,
+  august_2026_records: cancellations.filter((row) => row.final_month === "Aug 2026").length,
   month_counts: monthCounts,
 };
 
